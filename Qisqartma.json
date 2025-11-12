@@ -1,0 +1,57 @@
+[
+  {
+    "term uzb": "KHSS (Kimyoviy Havola Standartlari)",
+    "term rus": "ХРС (Химические Референс-Стандарты)",
+    "term eng": "CRS (Chemical Reference Standards)",
+    "kitob_uzb": "O‘zbekiston Farmakopeyasi",
+    "kitob_rus": "Государственная Фармакопея Узбекистана",
+    "kitob_eng": "Uzbekistan State Pharmacopoeia",
+    "kitob_uzb_url": "/kitob/uz/ozbekiston-farmakopeyasi",
+    "kitob_rus_url": "/kitob/ru/gosudarstvennaya-farmakopeya-uzbekistana",
+    "kitob_eng_url": "/kitob/en/uzbekistan-state-pharmacopoeia"
+  },
+  {
+    "term uzb": "BN (Boshlang‘ich Norma)",
+    "term rus": "НТ (Начальный Тест)",
+    "term eng": "ST (Starting Test)",
+    "kitob_uzb": "Farmatsevtika Nazorati Qoidalari",
+    "kitob_rus": "Фармацевтические Правила Контроля",
+    "kitob_eng": "Pharmaceutical Control Regulations",
+    "kitob_uzb_url": "/kitob/uz/farmatsevtika-nazorati-qoidalari",
+    "kitob_rus_url": "/kitob/ru/farmatsevticheskie-pravila-kontrolya",
+    "kitob_eng_url": "/kitob/en/pharmaceutical-control-regulations"
+  },
+  {
+    "term uzb": "YUK (Yaroqlilik Uchun Ko‘rsatkich)",
+    "term rus": "ПГП (Показатель Годности Препарата)",
+    "term eng": "AIC (Acceptability Indicator for Compound)",
+    "kitob_uzb": "Tahlil Me'yorlari",
+    "kitob_rus": "Нормативы Анализа",
+    "kitob_eng": "Analytical Standards",
+    "kitob_uzb_url": "/kitob/uz/tahlil-meyorlari",
+    "kitob_rus_url": "/kitob/ru/normativy-analiza",
+    "kitob_eng_url": "/kitob/en/analytical-standards"
+  },
+  {
+    "term uzb": "FR (Farmakopeya Ruxsati)",
+    "term rus": "ФР (Фармакопейное Разрешение)",
+    "term eng": "PA (Pharmacopoeial Approval)",
+    "kitob_uzb": "O‘zbekiston Farmatsevtika Qoidalari",
+    "kitob_rus": "Правила Узбекистана по Фармации",
+    "kitob_eng": "Uzbekistan Rules of Pharmacy",
+    "kitob_uzb_url": "/kitob/uz/ozbekiston-farmatsevtika-qoidalari",
+    "kitob_rus_url": "/kitob/ru/pravila-uzbekistana-po-farmatsii",
+    "kitob_eng_url": "/kitob/en/uzbekistan-rules-of-pharmacy"
+  },
+  {
+    "term uzb": "IDR (Identifikatsiya Darajasi)",
+    "term rus": "УСИ (Уровень Степени Идентификации)",
+    "term eng": "IDL (Identification Level)",
+    "kitob_uzb": "Analitik Tadqiqot Qo‘llanmasi",
+    "kitob_rus": "Руководство по Аналитическим Исследованиям",
+    "kitob_eng": "Analytical Study Guide",
+    "kitob_uzb_url": "/kitob/uz/analitik-tadqiqot-qollanmasi",
+    "kitob_rus_url": "/kitob/ru/rukovodstvo-po-analiticheskim-issledovaniyam",
+    "kitob_eng_url": "/kitob/en/analytical-study-guide"
+  }
+]

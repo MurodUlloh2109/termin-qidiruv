@@ -1,0 +1,57 @@
+[
+    {
+        "term uzb": "Avvalgi ekspertiza – Sifat tizimi asosida ishlab chiqilgan hujjatlar bo‘yicha ma’lumotlarni baholash.",
+        "term rus": "Предварительная экспертиза означает оценку документов и информации, представленных в рамках системы обеспечения качества",
+        "term eng": "Preliminary assessment refers to the evaluation of the documentation and data submitted within a quality system framework",
+        "kitob_uzb": "Pharmadviser⏺️",
+        "kitob_rus": "Pharmadviser⏺️",
+        "kitob_eng": "Pharmadviser⏺️",
+        "kitob_uzb_url": "https://pharmadvisor.ru",
+        "kitob_rus_url": "https://pharmadvisor.ru",
+        "kitob_eng_url": "https://pharmadvisor.ru"
+    },
+    {
+        "term uzb": "Zarur holatlar – Tibbiyotda maxsus sharoitlar tufayli majburiy holat.",
+        "term rus": "Непредвиденные обстоятельства означают исключительные условия в сфере здравоохранения",
+        "term eng": "Unforeseen circumstances refer to exceptional conditions in the field of health care",
+        "kitob_uzb": "Farmadvayzer",
+        "kitob_rus": "Pharmadviser⏺️",
+        "kitob_eng": "Pharmadviser⏺️",
+        "kitob_uzb_url": "https://pharmadvisor.ru",
+        "kitob_rus_url": "https://pharmadvisor.ru",
+        "kitob_eng_url": "https://pharmadvisor.ru"
+    },
+    {
+        "term uzb": "Mikrobiologik xatoliklar – mikroorganizmlar tufayli yuzaga keladigan tahlil xatoliklari.",
+        "term rus": "Микробиологические ошибки – это ошибки, возникающие в результате воздействия микроорганизмов на анализ",
+        "term eng": "Microbiological errors refer to analytical errors resulting from the impact of microorganisms",
+        "kitob_uzb": "Farmadvayzer",
+        "kitob_rus": "Pharmadviser⏺️",
+        "kitob_eng": "Pharmadviser⏺️",
+        "kitob_uzb_url": "https://pharmadvisor.ru",
+        "kitob_rus_url": "https://pharmadvisor.ru",
+        "kitob_eng_url": "https://pharmadvisor.ru"
+    },
+    {
+        "term uzb": "Samaradorlik darajasi – dori vositasining klinik natijalar berish darajasi.",
+        "term rus": "Уровень эффективности – это степень, с которой лекарственное средство дает клинические результаты.",
+        "term eng": "Effectiveness level refers to the degree to which a drug produces clinical outcomes.",
+        "kitob_uzb": "Farmadvayzer",
+        "kitob_rus": "Pharmadviser⏺️",
+        "kitob_eng": "Pharmadviser⏺️",
+        "kitob_uzb_url": "https://pharmadvisor.ru",
+        "kitob_rus_url": "https://pharmadvisor.ru",
+        "kitob_eng_url": "https://pharmadvisor.ru"
+    },
+    {
+        "term uzb": "Qisqartma CRS – Kimyoviy Referens Standartlar",
+        "term rus": "Сокращение CRS – Химические эталонные стандарты",
+        "term eng": "CRS (Chemical Reference Standards)",
+        "kitob_uzb": "Farmadvayzer",
+        "kitob_rus": "Pharmadviser⏺️",
+        "kitob_eng": "Pharmadviser⏺️",
+        "kitob_uzb_url": "https://pharmadvisor.ru",
+        "kitob_rus_url": "https://pharmadvisor.ru",
+        "kitob_eng_url": "https://pharmadvisor.ru"
+    }
+]

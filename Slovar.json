@@ -1,0 +1,39 @@
+[
+  {
+    "term eng": "Agent",
+    "term uzb": "Омил",
+    "term uzb1": "Модда",
+    "term uzb2": "Восита",
+    "term uzb3": "Агент",
+    "term rus": "Агент",
+    "kitob_eng": "2.6.12.",
+    "kitob_uzb": "R.Abdurahmonov / Ruscha-o'zbekcha lug'at, Moskva 1954, 19 bet.",
+    "kitob_uzb1": "Abdujabborova / Inglizcha-o‘zbekcha-ruscha farmatsevtika lug‘ati",
+    "kitob_uzb2": "Abdujabborova / Inglizcha-o‘zbekcha-ruscha farmatsevtika lug‘ati",
+    "kitob_uzb3": " Translate.ru",
+    "kitob_rus": "ВЭЖХ Словарь",
+    "kitob_eng_url": "https://example.com/books/pharmaceutical-glossary",
+    "kitob_uzb_url": "https://example.com/books/uzb-pharm-vəjx",
+    "kitob_uzb1_url": "https://example.com/books/uzb-pharm-dictionary",
+    "kitob_uzb2_url": "https://example.com/books/uzb-medical-terms",
+    "kitob_uzb3_url": "https://example.com/books/uzb-medical-terms",
+    "kitob_rus_url": "https://example.com/books/вэжх-словарь"
+  },  
+  {
+    "term eng": "EXAMPLE",
+    "term uzb": "MISOL",
+    "term uzb1": "NAMUNA",
+    "term rus": "ПРИМЕР",
+    "term rus1": "ОБРАЗЕЦ",
+    "kitob_eng": "English Dictionary",
+    "kitob_uzb": "Uzbek Dictionary",
+    "kitob_uzb1": "Uzbek Terms",
+    "kitob_rus": "Russian Dictionary",
+    "kitob_rus1": "Russian Terms",
+    "kitob_eng_url": "https://example.com/books/english-dictionary",
+    "kitob_uzb_url": "https://example.com/books/uzbek-dictionary",
+    "kitob_uzb1_url": "https://pharmadvisor.ru",
+    "kitob_rus_url": "https://example.com/books/russian-dictionary",
+    "kitob_rus1_url": "https://example.com/books/russian-terms"
+  }
+]
