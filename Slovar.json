@@ -1,39 +1,690 @@
 [
   {
-    "term eng": "Agent",
-    "term uzb": "Омил",
-    "term uzb1": "Модда",
-    "term uzb2": "Восита",
-    "term uzb3": "Агент",
-    "term rus": "Агент",
-    "kitob_eng": "2.6.12.",
-    "kitob_uzb": "R.Abdurahmonov / Ruscha-o'zbekcha lug'at, Moskva 1954, 19 bet.",
-    "kitob_uzb1": "Abdujabborova / Inglizcha-o‘zbekcha-ruscha farmatsevtika lug‘ati",
-    "kitob_uzb2": "Abdujabborova / Inglizcha-o‘zbekcha-ruscha farmatsevtika lug‘ati",
-    "kitob_uzb3": " Translate.ru",
-    "kitob_rus": "ВЭЖХ Словарь",
-    "kitob_eng_url": "https://example.com/books/pharmaceutical-glossary",
-    "kitob_uzb_url": "https://example.com/books/uzb-pharm-vəjx",
-    "kitob_uzb1_url": "https://example.com/books/uzb-pharm-dictionary",
-    "kitob_uzb2_url": "https://example.com/books/uzb-medical-terms",
-    "kitob_uzb3_url": "https://example.com/books/uzb-medical-terms",
-    "kitob_rus_url": "https://example.com/books/вэжх-словарь"
-  },  
+    "term eng": "Appearance",
+    "term rus": "Внешний вид",
+    "term uzb": "Ташқи кўриниши",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
   {
-    "term eng": "EXAMPLE",
-    "term uzb": "MISOL",
-    "term uzb1": "NAMUNA",
-    "term rus": "ПРИМЕР",
-    "term rus1": "ОБРАЗЕЦ",
-    "kitob_eng": "English Dictionary",
-    "kitob_uzb": "Uzbek Dictionary",
-    "kitob_uzb1": "Uzbek Terms",
-    "kitob_rus": "Russian Dictionary",
-    "kitob_rus1": "Russian Terms",
-    "kitob_eng_url": "https://example.com/books/english-dictionary",
-    "kitob_uzb_url": "https://example.com/books/uzbek-dictionary",
-    "kitob_uzb1_url": "https://pharmadvisor.ru",
-    "kitob_rus_url": "https://example.com/books/russian-dictionary",
-    "kitob_rus1_url": "https://example.com/books/russian-terms"
+    "term eng": "Solubility",
+    "term rus": "Растворимость",
+    "term uzb": "Эрувчанлиги",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "mp",
+    "term rus": "Температура плавления",
+    "term uzb": "Суюқланиш ҳарорати",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "IDENTIFICATION",
+    "term rus": "ПОДЛИННОСТЬ",
+    "term uzb": "ЧИНЛИК",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "First identification",
+    "term rus": "Первая идентификация",
+    "term uzb": "Биринчи идентификация",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Second identification",
+    "term rus": "Вторая идентификация",
+    "term uzb": "Иккинчи идентификация",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Ultraviolet and visible absorption spectrophotometry (2.2.25)",
+    "term rus": "Абсорбционная спектрофотометрия в ультрафиолетовой и видимой областях (2.2.25)",
+    "term uzb": "Ультрабинафша ва кўринувчи соҳаларда абсорбцион спектрофотометрия (2.2.25)",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Specific optical rotation (see Tests)",
+    "term rus": "Удельное оптическое вращение (см. Испытания)",
+    "term uzb": "Нисбий оптик буриш (“Синовлар”га қаралсин)",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Infrared absorption spectrophotometry (2.2.24)",
+    "term rus": "Абсорбционная спектрофотометрия в инфракрасной области (2.2.24)",
+    "term uzb": "Инфрақизил соҳада абсорбцион спектрофотометрия (2.2.24)",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Melting point (2.2.14)",
+    "term rus": "Температура плавления (2.2.14)",
+    "term uzb": "Суюқланиш ҳарорати (2.2.14)",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Determination A",
+    "term rus": "Определение А",
+    "term uzb": "А аниқлаш",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Result A",
+    "term rus": "Результат A",
+    "term uzb": "А натижа",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Solution A",
+    "term rus": "Раствор А",
+    "term uzb": "А эритма",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Spectral range",
+    "term rus": "Спектральный диапазон",
+    "term uzb": "Спектр диапазони",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Absorption maximum",
+    "term rus": "Максимумы поглощения",
+    "term uzb": "Ютилиш максимуми",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Specific absorbance at the absorption maximum",
+    "term rus": "Удельное оптическая поглощения в максимуме поглощения",
+    "term uzb": "Ютилиш максимумида нисбий ютилиш кўрсаткичи",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Comparison",
+    "term rus": "Сравнения",
+    "term uzb": "Солиштириш",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "TESTS",
+    "term rus": "ИСПЫТАНИЯ",
+    "term uzb": "СИНОВЛАР",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Solution S.",
+    "term rus": "Раствор S.",
+    "term uzb": "S эритма",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Appearance.",
+    "term rus": "Описание.",
+    "term uzb": "Тавсиф",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Appearance of solution",
+    "term rus": "Описание раствора",
+    "term uzb": "Эритма тавсифи",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Freezing point (2.2.18):",
+    "term rus": "Точка замерзания (2.2.18):",
+    "term uzb": "Музлаш нуқтаси (2.2.18):",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Reducing substances.",
+    "term rus": "Восстанавливающие вещества.",
+    "term uzb": "Қайтарилувчи моддалар",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Related substances",
+    "term rus": "Родственные вещества",
+    "term uzb": "Турдош моддалар",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Specific optical rotation (2.2.7):",
+    "term rus": "Удельное оптическое вращение (2.2.7):",
+    "term uzb": "Нисбий оптик буриш (2.2.7)",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Solvent mixture:",
+    "term rus": "Смесь растворителей:",
+    "term uzb": "Эритувчилар аралашмаси:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Test solution.",
+    "term rus": "Испытуемый раствор.",
+    "term uzb": "Синалаётган эритма",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Reference solution (a).",
+    "term rus": "Стандартный раствор (а).",
+    "term uzb": "Стандарт эритма (а)",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Column:",
+    "term rus": "Колонка:",
+    "term uzb": "Колонка:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "– size:",
+    "term rus": "– размер:",
+    "term uzb": "– ўлчами:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "– stationary phase:",
+    "term rus": "– неподвижная фаза:",
+    "term uzb": "– қўзғалмас фаза:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "– temperature:",
+    "term rus": "– температура:",
+    "term uzb": "– ҳарорат:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Mobile phase:",
+    "term rus": "Подвижная фаза:",
+    "term uzb": "Қўзғалувчан фаза:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Flow rate:",
+    "term rus": "Скорость потока:",
+    "term uzb": "Оқим тезлиги:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Detection:",
+    "term rus": "Детектирование:",
+    "term uzb": "Детекторлаш:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Injection:",
+    "term rus": "Вводимая проба:",
+    "term uzb": "Юбориладиган намуна:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Run time:",
+    "term rus": "Длительность хроматографирования:",
+    "term uzb": "Хроматографиялаш давомийлиги:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Identification of impurities:",
+    "term rus": "Идентификация примесей:",
+    "term uzb": "Ёт аралашмалар идентификацияси:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Relative retention",
+    "term rus": "Относительное время удерживания",
+    "term uzb": "Нисбий ушланиш вақти",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "System suitability:",
+    "term rus": "Пригодность хроматографической системы:",
+    "term uzb": "Хроматографик тизим яроқлилиги:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "– resolution:",
+    "term rus": "– разрешение:",
+    "term uzb": "– чўққилар орасидаги фарқ:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "– peak-to-valley ratio:",
+    "term rus": "– отношение максимум/минимум:",
+    "term uzb": "– максимум/минимум нисбати:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "– symmetry factor:",
+    "term rus": "– фактор симметрии:",
+    "term uzb": "– симметрия омили:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Calculation of percentage contents:",
+    "term rus": "Расчет процентного содержания:",
+    "term uzb": "Фоиз миқдорини ҳисоблаш:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Limits:",
+    "term rus": "Нормы:",
+    "term uzb": "Меъёрлар:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "– correction factors:",
+    "term rus": "– поправочные коэффициенты:",
+    "term uzb": "– тўғрилаш коэффициентлари:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "– impurities A, B, C, D, E, F:",
+    "term rus": "– примеси А, В, С, D, Е, F:",
+    "term uzb": "– А, В, С, D, Е, F ёт аралашмалари:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "– unspecified impurities:",
+    "term rus": "– неконтролируемые примеси:",
+    "term uzb": "– назорат қилинмайдиган ёт аралашмалар:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "– total:",
+    "term rus": "– сумма примесей:",
+    "term uzb": "– ёт аралашмалар йиғиндиси:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "– disregard limit:",
+    "term rus": "– предел исключения:",
+    "term uzb": "– истисно чегараси:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "– reporting threshold:",
+    "term rus": "– предел регистрации:",
+    "term uzb": "– қайд этиш чегараси:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Zinc: maximum 10 ppm.",
+    "term rus": "Цинк: не более 10 ppm.",
+    "term uzb": "Рух: 10 ppm дан кўп бўлмаган.",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Atomic absorption spectrometry (2.2.23, Method II).",
+    "term rus": "Испытание проводят методом атомно-абсорбционной спектрометрии (2.2.23, Метод II).",
+    "term uzb": "Синов атом-абсорбцион спектрометрия (2.2.23, II усул) усулида олиб борилади.",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Source:",
+    "term rus": "Источник:",
+    "term uzb": "Манба:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Wavelength:",
+    "term rus": "Длина волны:",
+    "term uzb": "Тўлқин узунлиги:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Atomisation device:",
+    "term rus": "Атомизатор:",
+    "term uzb": "Атомизатор:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Water (2.5.32):",
+    "term rus": "Вода (2.5.32):",
+    "term uzb": "Сув (2.5.32):",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Chlorides (2.4.4):",
+    "term rus": "Хлориды (2.4.4):",
+    "term uzb": "Хлоридлар (2.4.4):",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Sulfates (2.4.13):",
+    "term rus": "Сульфаты (2.4.13):",
+    "term uzb": "Сульфатлар (2.4.13):",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Iron (2.4.9):",
+    "term rus": "Железо (2.4.9):",
+    "term uzb": "Темир (2.4.9):",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Residue on evaporation:",
+    "term rus": "Остаток после выпаривании:",
+    "term uzb": "Буғлатилгандан кейинги қолдиқ:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Loss on drying (2.2.32):",
+    "term rus": "Потеря в массе при высушивании (2.2.32):",
+    "term uzb": "Қуритишдаги масса йўқотилиши (2.2.32):",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Sulfated ash (2.4.14):",
+    "term rus": "Сульфатная зола (2.4.14):",
+    "term uzb": "Сульфат кули (2.4.14):",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "ASSAY",
+    "term rus": "КОЛИЧЕСТВЕННОЕ ОПРЕДЕЛЕНИЕ",
+    "term uzb": "МИҚДОРИЙ ТАҲЛИЛ",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "STORAGE",
+    "term rus": "ХРАНЕНИЕ",
+    "term uzb": "САҚЛАШ",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "IMPURITIES",
+    "term rus": "ПРИМЕСИ",
+    "term uzb": "ЁТ АРАЛАШМАЛАР",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Specified impurities:",
+    "term rus": "Контролируемые примеси:",
+    "term uzb": "Назорат қилинадиган ёт аралашмалар:",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Other detectable impurities",
+    "term rus": "Другие обнаруживаемые примеси",
+    "term uzb": "Аниқланадиган бошқа ёт аралашмалар",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Substances for pharmaceutical use (2034).",
+    "term rus": "«Субстанции для фармацевтического применения» (2034).",
+    "term uzb": "“Фармацевтикада қўлланиладиган субстанциялар” (2034)",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "See also 5.10. Control of impurities in substances for pharmaceutical use):",
+    "term rus": "См. также 5.10. «Контроль примесей в субстанциях для фармацевтического применения»):",
+    "term uzb": "Шунингдек, 5.10.“Фармацевтикада қўлланиладиган субстанциялардаги ёт аралашмаларнинг назорати” матнига қаралсин):",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Shoulder",
+    "term rus": "Плечо",
+    "term uzb": "Чўққи елкаси",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "Application",
+    "term rus": "Нанесения",
+    "term uzb": "Томизиш",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "min",
+    "term rus": "мин",
+    "term uzb": "мин",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "dried substance",
+    "term rus": "в пересчёте на сухое вещество",
+    "term uzb": "қуруқ модда ҳисобида",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "3 times the retention time",
+    "term rus": "3-кратное время удерживания",
+    "term uzb": "3 карра ушланиш вақти",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "V/V",
+    "term rus": "об/об",
+    "term uzb": "ҳ/ҳ",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "(per cent V/V)",
+    "term rus": "(% об/об)",
+    "term uzb": "(% ҳ/ҳ)",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "CFU/g",
+    "term rus": "КОЕ/г",
+    "term uzb": "КҲҚБ/г",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "total combined yeasts/moulds count (TYMC)",
+    "term rus": "общее число дрожжей и плесневых грибов (TYMC)",
+    "term uzb": "ачитқи ва моғор замбуруғларининг умумий сони (TYMC)",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "total aerobic microbial count (TAMC)",
+    "term rus": "общее число аэробных микроорганизмов (TAMC)",
+    "term uzb": "аэроб микроорганизмларнинг умумий сони (TAMC)",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "flame ionisation",
+    "term rus": "пламенно-ионизационный детектор",
+    "term uzb": "алангали-ионизацияловчи детектор",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "vortex",
+    "term rus": "вихревой",
+    "term uzb": "гирдобли",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "crystalline",
+    "term rus": "кристаллическая",
+    "term uzb": "кристалл",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "It shows polymorphism (5.9).",
+    "term rus": "Проявляет полиморфизм (5.9).",
+    "term uzb": "Полиморфизмни (5.9) намоён қилади.",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "times",
+    "term rus": "кратное",
+    "term uzb": "карра",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
+  },
+  {
+    "term eng": "tamper-evident",
+    "term rus": "защищен от первого вскрытия",
+    "term uzb": "бирламчи очилишдан ҳимояланган",
+    "kitob_eng": "European pharmacopoeia",
+    "kitob_uzb": "O'zbekiston Respublikasi Davlat farmakopeyasi",
+    "kitob_rus": "Государственная фармакопея Республики Узбекистан"
   }
 ]
