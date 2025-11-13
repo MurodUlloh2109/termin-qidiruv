@@ -17,10 +17,10 @@
             display: ['Manrope', 'sans-serif'],
           },
           colors: {
-            primary: '#10b981',
-            accent: '#34d399',
-            dark: '#065f46',
-            light: '#ecfdf5',
+            primary: '#10b981', // Emerald
+            accent: '#34d399', // Emerald light
+            dark: '#065f46', // Deep green
+            light: '#ecfdf5', // Background
             border: '#86efac',
           },
           animation: {
@@ -106,36 +106,32 @@
       </p>
     </div>
   </header>
-
   <!-- Main Buttons Grid -->
   <main class="max-w-6xl mx-auto px-6 pb-16">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-      <!-- 1. YANGI: Tarjimon, kril-lotin (Birinchi tugma) -->
-      <a href="https://tilmoch.ai/uz/translator" target="_blank" class="block card p-8 text-center group animate-fade-in" style="animation-delay: 0.1s">
-        <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-teal-400 to-cyan-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:glow transition-all">
-          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h18M9 3v2m6-2v2M9 19v2m6-2v2M5 9h14M5 15h14M5 21h14"/>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12l3 3m0 0l-3 3m3-3H9"/>
-          </svg>
-        </div>
-        <h3 class="text-2xl font-bold text-teal-700 mb-3">Tarjimon, kril-lotin</h3>
-        <p class="text-gray-600">O‘zbek-rus-ingliz tillariga tabiiy tarjima</p>
-      </a>
-
-      <!-- 2. Munozarali so'zlar va terminlar -->
-      <a href="qidiruv18.html" class="block card p-8 text-center group animate-fade-in" style="animation-delay: 0.2s">
-        <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-amber-400 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:glow transition-all">
-          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
-        </div>
-        <h3 class="text-2xl font-bold text-amber-700 mb-3">Munozarali so‘zlar va terminlar</h3>
-        <p class="text-gray-600">Muhokama qilinayotgan va tasdiqlanmagan atamalar</p>
-      </a>
-
-      <!-- 3. Maqolalar ro‘yxati -->
-      <a href="#" class="block card p-8 text-center group opacity-70 cursor-not-allowed" onclick="event.preventDefault(); alert('Tez orada!')">
+    
+     <!-- 1. Matn farqini aniqlash (Hozircha faol emas) -->
+<div class="block card p-8 text-center group animate-fade-in opacity-70 cursor-not-allowed" style="animation-delay: 0.1s" onclick="event.preventDefault(); alert('Bu bo‘lim tez orada ochiladi!')">
+  <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:glow transition-all">
+    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"/>
+    </svg>
+  </div>
+  <h3 class="text-2xl font-bold text-emerald-700 mb-3">Matn farqini aniqlash</h3>
+  <p class="text-gray-600">Ikki matn o‘rtasidagi farqlarni aniqlash va taqqoslash</p>
+</div>
+<!-- 2. Munozarali so'zlar va terminlar (Ishlaydi!) -->
+<a href="qidiruv18.html" class="block card p-8 text-center group animate-fade-in" style="animation-delay: 0.2s">
+  <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-amber-400 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:glow transition-all">
+    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+    </svg>
+  </div>
+  <h3 class="text-2xl font-bold text-amber-700 mb-3">Munozarali so‘zlar va terminlar</h3>
+  <p class="text-gray-600">Muhokama qilinayotgan va tasdiqlanmagan atamalar</p>
+</a>
+      <!-- 3. Davlat farmakopeyasida mavjud maqolalar ro‘yxati -->
+      <a href="#" class="block card p-8 text-center group opacity-70 cursor-not-allowed" onclick="alert('Tez orada!')">
         <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg">
           <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
@@ -144,10 +140,9 @@
         <h3 class="text-2xl font-bold text-blue-700 mb-3">Maqolalar ro‘yxati</h3>
         <p class="text-gray-600">Davlat farmakopeyasida mavjud barcha maqolalar</p>
       </a>
-
       <!-- 4. Qo‘shimcha -->
-      <a href="#" class="block card p-8 text-center group opacity-70 cursor-not-allowed" onclick="event.preventDefault(); alert('Tez orada!')">
-        <div class="w-20 h-20 mx-auto mb-5-5 bg-gradient-to-br from-purple-400 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg">
+      <a href="#" class="block card p-8 text-center group opacity-70 cursor-not-allowed" onclick="alert('Tez orada!')">
+        <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-purple-400 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg">
           <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
           </svg>
@@ -155,21 +150,8 @@
         <h3 class="text-2xl font-bold text-purple-700 mb-3">Qo'shimcha</h3>
         <p class="text-gray-600">Foydali vositalar, qo‘llanmalar va resurslar</p>
       </a>
-
-      <!-- 5. Matn farqini aniqlash (hozircha faol emas) -->
-      <div class="block card p-8 text-center group animate-fade-in opacity-70 cursor-not-allowed" style="animation-delay: 0.3s" onclick="event.preventDefault(); alert('Bu bo‘lim tez orada ochiladi!')">
-        <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:glow transition-all">
-          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"/>
-          </svg>
-        </div>
-        <h3 class="text-2xl font-bold text-emerald-700 mb-3">Matn farqini aniqlash</h3>
-        <p class="text-gray-600">Ikki matn o‘rtasidagi farqlarni aniqlash va taqqoslash</p>
-      </div>
-
     </div>
   </main>
-
   <!-- Footer -->
   <footer class="bg-white/80 backdrop-blur-sm border-t border-emerald-200 py-6 mt-16">
     <div class="max-w-6xl mx-auto px-6 text-center text-sm text-gray-600">
@@ -178,3 +160,4 @@
   </footer>
 </body>
 </html>
+ 
