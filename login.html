@@ -1,0 +1,20 @@
+<script>
+  function login(e) {
+    e.preventDefault();
+    const login = document.getElementById("login").value.trim();
+    const pass = document.getElementById("password").value;
+    const error = document.getElementById("error");
+
+    const approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
+    const user = approved.find(u => u.login === login && u.pass === pass);
+
+    if (user) {
+      localStorage.setItem("authenticated", "true");
+      localStorage.setItem("current_user", login);
+      window.location.href = "qidiruv18.html";
+    } else {
+      error.classList.remove("hidden");
+      error.textContent = "Ruxsat yo‘q yoki noto‘g‘ri ma’lumot!";
+    }
+  }
+</script>
