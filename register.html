@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ro‘yxatdan o‘tish</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: linear-gradient(135deg, #10b981, #059669); font-family: 'Inter', sans-serif; }
+    .card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(16, 185, 129, 0.3); }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6">
+  <div class="card p-8 rounded-2xl shadow-xl max-w-md w-full">
+    <div class="text-center mb-8">
+      <div class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl mx-auto shadow-lg"></div>
+      <h1 class="text-2xl font-bold text-emerald-700 mt-4">Ro‘yxatdan o‘tish</h1>
+      <p class="text-gray-600 mt-2">So‘rov yuboring, admin tasdiqlaydi</p>
+    </div>
+
+    <form onsubmit="requestAccess(event)" class="space-y-5">
+      <input type="text" id="newLogin" placeholder="Login" class="w-full px-4 py-3 rounded-xl border border-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-500" required />
+      <input type="password" id="newPassword" placeholder="Parol" class="w-full px-4 py-3 rounded-xl border border-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-500" required />
+      <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition">
+        So‘rov yuborish
+      </button>
+    </form>
+
+    <p id="msg" class="text-center mt-4 hidden"></p>
+    <p class="text-center mt-4 text-sm">
+      <a href="login.html" class="text-emerald-600 font-bold underline">Kirish</a>
+    </p>
+  </div>
+
+  <script>
+    function requestAccess(e) {
+      e.preventDefault();
+      const login = document.getElementById("newLogin").value.trim();
+      const pass = document.getElementById("newPassword").value;
+      const msg = document.getElementById("msg");
+
+      if (login.length < 3 || pass.length < 4) {
+        msg.textContent = "Login 3+, parol 4+ belgi!";
+        msg.className = "text-red-600";
+        msg.classList.remove("hidden");
+        return;
+      }
+
+      const requests = JSON.parse(localStorage.getItem("access_requests") || "[]");
+      if (requests.some(r => r.login === login)) {
+        msg.textContent = "Bu login uchun so‘rov allaqachon yuborilgan!";
+        msg.className = "text-orange-600";
+        msg.classList.remove("hidden");
+        return;
+      }
+
+      requests.push({ login, pass, status: "pending" });
+      localStorage.setItem("access_requests", JSON.stringify(requests));
+
+      msg.textContent = "So‘rov yuborildi! Admin tasdiqlashini kuting.";
+      msg.className = "text-green-600";
+      msg.classList.remove("hidden");
+
+      setTimeout(() => window.location.href = "login.html", 2000);
+    }
+  </script>
+</body>
+</html>
