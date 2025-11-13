@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <title>PDF Taqqoslash</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f9f9fb; }
+    h1 { color: #2c3e50; text-align: center; }
+    .upload-box { border: 2px dashed #3498db; padding: 20px; border-radius: 12px; text-align: center; background: #ecf0f1; }
+    input[type="file"] { margin: 10px; }
+    button { padding: 12px 24px; background: #3498db; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
+    button:hover { background: #2980b9; }
+    .footer { text-align: center; margin-top: 40px; color: #7f8c8d; font-size: 14px; }
+    .api-link { display: block; margin: 20px 0; text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>PDF Fayllarni Taqqoslash</h1>
+  <p style="text-align:center;">Ikkita PDF yuklang va farqlarni <strong>qizil chiziq</strong> bilan ko‘ring.</p>
+
+  <form action="/compare-pdf" method="post" enctype="multipart/form-data">
+    <div class="upload-box">
+      <p><strong>1-PDF:</strong></p>
+      <input type="file" name="file1" accept=".pdf" required />
+      <p><strong>2-PDF:</strong></p>
+      <input type="file" name="file2" accept=".pdf" required />
+    </div>
+    <br/>
+    <button type="submit">Taqqoslash</button>
+  </form>
+
+  <div class="api-link">
+    <a href="/docs" target="_blank">API Hujjatlari (Swagger)</a>
+  </div>
+
+  <div class="footer">
+    <p>SSIM algoritmi orqali aniq taqqoslash • OpenCV + FastAPI</p>
+  </div>
+</body>
+</html>
