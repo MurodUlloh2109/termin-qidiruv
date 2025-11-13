@@ -93,12 +93,34 @@
 </head>
 <body class="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 min-h-screen">
  
+  <!-- 1. HIMOYA (eng yuqorida!) -->
   <script>
-  // Agar login qilinmagan bo‘lsa → login.html ga yo‘naltir
-  if (!localStorage.getItem("authenticated")) {
-    window.location.href = "login.html";
-  }
-</script>
+    if (!localStorage.getItem("authenticated")) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <!-- 2. SALOM + CHIQISH TUGMASI (eng yuqorida, absolute) -->
+  <div class="absolute top-6 right-6 flex items-center space-x-3 z-50">
+    <span class="text-emerald-700 text-sm">Salom, <strong id="username"></strong>!</span>
+    <button onclick="logout()" class="bg-red-600 text-white px-4 py-1 rounded-lg text-sm hover:bg-red-700 transition">
+      Chiqish
+    </button>
+  </div>
+
+  <!-- 3. JAVASCRIPT (foydalanuvchi nomi + chiqish) -->
+  <script>
+    const user = localStorage.getItem("current_user");
+    if (user && document.getElementById("username")) {
+      document.getElementById("username").textContent = user;
+    }
+
+    function logout() {
+      localStorage.removeItem("authenticated");
+      localStorage.removeItem("current_user");
+      window.location.href = "login.html";
+    }
+  </script>
   
   <!-- Header -->
   <header class="text-center py-12 px-6">
