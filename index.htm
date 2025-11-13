@@ -92,6 +92,14 @@
   </style>
 </head>
 <body class="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 min-h-screen">
+ 
+  <script>
+  // Agar login qilinmagan bo‘lsa → login.html ga yo‘naltir
+  if (!localStorage.getItem("authenticated")) {
+    window.location.href = "login.html";
+  }
+</script>
+  
   <!-- Header -->
   <header class="text-center py-12 px-6">
     <div class="max-w-5xl mx-auto">
