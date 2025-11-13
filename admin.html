@@ -9,7 +9,7 @@
 <body class="bg-gradient-to-br from-emerald-50 to-teal-50 min-h-screen p-6">
   <div class="max-w-4xl mx-auto">
     <div class="bg-white rounded-2xl shadow-xl p-8">
-      <h1 class="text-3xl font-bold text-emerald-700 mb-6 text-center">Admin Panel</h1>
+      <h1 class="text-3xl font-bold text-emerald-700 mb-6 text-center">Admin Panel – Ruxsatlar</h1>
       
       <!-- So'rovlar ro'yxati -->
       <div id="requests" class="space-y-4"></div>
@@ -27,7 +27,7 @@
     const adminPass = "admin2025";
     const input = prompt("Admin parolini kiriting:");
     if (input !== adminPass) {
-      alert("Ruxsat yo‘q!");
+      alert("Ruxsat yo'q!");
       window.location.href = "index.html";
       throw new Error("Access denied");
     }
@@ -48,14 +48,14 @@
       // So'rovlar
       reqDiv.innerHTML = "";
       if (requests.length === 0) {
-        reqDiv.innerHTML = "<p class='text-gray-600'>Yangi so‘rov yo‘q.</p>";
+        reqDiv.innerHTML = "<p class='text-gray-600'>Yangi so'rov yo'q.</p>";
       } else {
         requests.forEach((req, i) => {
           const div = document.createElement("div");
           div.className = "flex justify-between items-center p-4 bg-orange-50 rounded-lg border border-orange-200";
           div.innerHTML = `
             <div>
-              <strong>${req.login}</strong> – So‘rov yuborgan
+              <strong>${req.login}</strong> – So'rov yuborgan
             </div>
             <button onclick="approve(${i})" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition">
               Ruxsat berish
