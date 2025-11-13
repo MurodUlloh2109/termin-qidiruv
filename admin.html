@@ -3,48 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Panel</title>
+  <title>Admin Panel – Ruxsatlar</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 min-h-screen p-6">
+<body class="bg-gradient-to-br from-emerald-50 to-teal-50 min-h-screen p-6">
   <div class="max-w-4xl mx-auto">
-    <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
-      <h1 class="text-2xl font-bold text-emerald-700 mb-4">Admin Panel – Ruxsatlar</h1>
-      <div id="requests"></div>
+    <div class="bg-white rounded-2xl shadow-xl p-8">
+      <h1 class="text-3xl font-bold text-emerald-700 mb-6 text-center">Admin Panel</h1>
+      
+      <!-- So'rovlar ro'yxati -->
+      <div id="requests" class="space-y-4"></div>
+
+      <!-- Tasdiqlangan foydalanuvchilar -->
+      <div class="mt-8">
+        <h2 class="text-xl font-semibold text-emerald-700 mb-3">Tasdiqlangan foydalanuvchilar</h2>
+        <div id="approved" class="space-y-2"></div>
+      </div>
     </div>
   </div>
 
   <script>
-    const adminPass = "admin2025"; // O‘zgartiring!
+    // Admin paroli (o'zgartiring!)
+    const adminPass = "admin2025";
     const input = prompt("Admin parolini kiriting:");
     if (input !== adminPass) {
       alert("Ruxsat yo‘q!");
       window.location.href = "index.html";
+      throw new Error("Access denied");
     }
 
-    function loadRequests() {
+    // Avval adminni tasdiqlanganlarga qo'shish
+    let approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
+    if (!approved.some(u => u.login === "admin")) {
+      approved.push({ login: "admin", pass: "admin2025" });
+      localStorage.setItem("approved_users", JSON.stringify(approved));
+    }
+
+    function loadData() {
       const requests = JSON.parse(localStorage.getItem("access_requests") || "[]");
       const approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
-      const container = document.getElementById("requests");
-      container.innerHTML = "";
+      const reqDiv = document.getElementById("requests");
+      const appDiv = document.getElementById("approved");
 
-      if (!requests.length) {
-        container.innerHTML = "<p class='text-gray-600'>Yangi so‘rov yo‘q.</p>";
-        return;
+      // So'rovlar
+      reqDiv.innerHTML = "";
+      if (requests.length === 0) {
+        reqDiv.innerHTML = "<p class='text-gray-600'>Yangi so‘rov yo‘q.</p>";
+      } else {
+        requests.forEach((req, i) => {
+          const div = document.createElement("div");
+          div.className = "flex justify-between items-center p-4 bg-orange-50 rounded-lg border border-orange-200";
+          div.innerHTML = `
+            <div>
+              <strong>${req.login}</strong> – So‘rov yuborgan
+            </div>
+            <button onclick="approve(${i})" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition">
+              Ruxsat berish
+            </button>
+          `;
+          reqDiv.appendChild(div);
+        });
       }
 
-      requests.forEach((req, i) => {
+      // Tasdiqlanganlar
+      appDiv.innerHTML = "";
+      approved.forEach(u => {
         const div = document.createElement("div");
-        div.className = "flex justify-between items-center p-4 bg-emerald-50 rounded-lg mb-3";
-        div.innerHTML = `
-          <div>
-            <strong>${req.login}</strong> – So‘rov yuborgan
-          </div>
-          <button onclick="approve(${i})" class="bg-green-600 text-white px-4 py-1 rounded-lg text-sm hover:bg-green-700">
-            Ruxsat berish
-          </button>
-        `;
-        container.appendChild(div);
+        div.className = "p-3 bg-emerald-50 rounded-lg border border-emerald-200";
+        div.innerHTML = `<strong>${u.login}</strong> – Kirish huquqi bor`;
+        appDiv.appendChild(div);
       });
     }
 
@@ -55,13 +82,13 @@
 
       const approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
       approved.push({ login: user.login, pass: user.pass });
-      
+
       localStorage.setItem("access_requests", JSON.stringify(requests));
       localStorage.setItem("approved_users", JSON.stringify(approved));
-      loadRequests();
+      loadData();
     }
 
-    loadRequests();
+    loadData();
   </script>
 </body>
 </html>
