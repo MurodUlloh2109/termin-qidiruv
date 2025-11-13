@@ -167,6 +167,18 @@
 </head>
 <body class="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 text-gray-800 min-h-screen">
 
+  <script>
+    if (!localStorage.getItem("authenticated")) {
+      window.location.href = "login.html";
+    }
+
+    // Ixtiyoriy: Chiqish tugmasi
+    function logout() {
+      localStorage.removeItem("authenticated");
+      localStorage.removeItem("current_user");
+      window.location.href = "login.html";
+    }
+  </script>
   <!-- Header -->
 <header class="shadow-sm">
   <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
@@ -432,6 +444,7 @@
 </body>
 
 </html>
+
 
 
 
