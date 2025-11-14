@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Panel</title>
+  <title>Admin Panel – Ruxsatlar</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-br from-emerald-50 to-teal-50 min-h-screen p-6">
   <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8">
-    <h1 class="text-3xl font-bold text-emerald-700 text-center mb-6">Admin Panel</h1>
-    <div id="content"></div>
+    <h1 class="text-3xl font-bold text-emerald-700 text-center mb-6">Admin Panel – Ruxsatlar</h1>
+    
+    <div id="requests" class="space-y-4 mb-8"></div>
+    <div id="approved" class="space-y-2"></div>
   </div>
 
   <script>
@@ -21,22 +23,61 @@
       throw "";
     }
 
-    // ADMINNI AVTO QO'SHISH
+    // Adminni avto qo'shish
     let approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
     if (!approved.some(u => u.login === "admin")) {
       approved.push({ login: "admin", pass: "admin2025" });
       localStorage.setItem("approved_users", JSON.stringify(approved));
-      alert("Admin hisobi yaratildi!");
     }
 
-    const div = document.getElementById("content");
-    div.innerHTML = `
-      <h2 class="text-xl font-semibold mb-4">Tasdiqlangan foydalanuvchilar</h2>
-      <div class="space-y-2">
-        ${approved.map(u => `<div class="p-3 bg-emerald-50 rounded-lg"><strong>${u.login}</strong></div>`).join("")}
-      </div>
-      <p class="mt-6 text-green-600 font-bold">Siz admin sifatidasiz!</p>
-    `;
+    function loadData() {
+      const requests = JSON.parse(localStorage.getItem("access_requests") || "[]");
+      const approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
+      const reqDiv = document.getElementById("requests");
+      const appDiv = document.getElementById("approved");
+
+      // So'rovlar
+      reqDiv.innerHTML = "<h2 class='text-xl font-semibold mb-3'>Yangi so‘rovlar</h2>";
+      if (requests.length === 0) {
+        reqDiv.innerHTML += "<p class='text-gray-600'>Yangi so‘rov yo‘q.</p>";
+      } else {
+        requests.forEach((req, i) => {
+          const div = document.createElement("div");
+          div.className = "flex justify-between items-center p-4 bg-orange-50 rounded-lg border border-orange-200";
+          div.innerHTML = `
+            <div><strong>${req.login}</strong> – So‘rov yuborgan</div>
+            <button onclick="approve(${i})" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700">
+              Ruxsat berish
+            </button>
+          `;
+          reqDiv.appendChild(div);
+        });
+      }
+
+      // Tasdiqlanganlar
+      appDiv.innerHTML = "<h2 class='text-xl font-semibold mb-3 mt-8'>Tasdiqlangan foydalanuvchilar</h2>";
+      approved.forEach(u => {
+        const div = document.createElement("div");
+        div.className = "p-3 bg-emerald-50 rounded-lg border border-emerald-200";
+        div.innerHTML = `<strong>${u.login}</strong> – Kirish huquqi bor`;
+        appDiv.appendChild(div);
+      });
+    }
+
+    function approve(index) {
+      const requests = JSON.parse(localStorage.getItem("access_requests") || "[]");
+      const user = requests[index];
+      requests.splice(index, 1);
+
+      const approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
+      approved.push({ login: user.login, pass: user.pass });
+
+      localStorage.setItem("access_requests", JSON.stringify(requests));
+      localStorage.setItem("approved_users", JSON.stringify(approved));
+      loadData();
+    }
+
+    loadData();
   </script>
 </body>
 </html>
