@@ -34,6 +34,16 @@
   </div>
 
   <script>
+    // ADMIN HISOBINI AVTO YARATISH (faqat 1 marta!)
+    (function() {
+      const approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
+      if (!approved.some(u => u.login === "admin")) {
+        approved.push({ login: "admin", pass: "admin2025" });
+        localStorage.setItem("approved_users", JSON.stringify(approved));
+        console.log("Admin hisobi yaratildi!");
+      }
+    })();
+
     function login(e) {
       e.preventDefault();
       const login = document.getElementById("login").value.trim();
