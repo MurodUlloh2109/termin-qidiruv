@@ -3,81 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Panel – Ruxsatlar</title>
+  <title>Admin Paneli – DFIB</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: linear-gradient(135deg, #059669, #10b981); font-family: 'Inter', sans-serif; }
+    .card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .status-pending { background-color: #fef3c7; color: #b45309; }
+    .status-approved { background-color: #d1fae5; color: #065f46; }
+    .status-rejected { background-color: #fee2e2; color: #991b1b; }
+  </style>
 </head>
-<body class="bg-gradient-to-br from-emerald-50 to-teal-50 min-h-screen p-6">
-  <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8">
-    <h1 class="text-3xl font-bold text-emerald-700 text-center mb-6">Admin Panel – Ruxsatlar</h1>
-    
-    <div id="requests" class="space-y-4 mb-8"></div>
-    <div id="approved" class="space-y-2"></div>
+<body class="min-h-screen p-6">
+
+  <script>
+    const current_user = localStorage.getItem("current_user");
+    if (!localStorage.getItem("authenticated") || current_user !== "admin") {
+      alert("Siz admin emassiz! Sizga ruxsat yo'q.");
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <div class="card max-w-4xl mx-auto p-8 rounded-2xl shadow-xl">
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-3xl font-bold text-emerald-700">🔐 Admin Paneli</h1>
+      <a href="index.html" class="bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-emerald-600 transition">Asosiy sahifaga</a>
+    </div>
+
+    <p class="text-gray-600 mb-6">Yangi foydalanuvchilarning kirish so‘rovlari ro‘yxati.</p>
+
+    <div id="requestsList" class="space-y-4">
+      <p class="text-center text-gray-500" id="loadingMsg">So'rovlar yuklanmoqda...</p>
+    </div>
+
+    <p id="noRequestsMsg" class="text-center text-gray-500 mt-8 hidden">Tasdiqlanmagan so‘rovlar mavjud emas.</p>
   </div>
 
   <script>
-    const adminPass = "admin2025";
-    const input = prompt("Admin parolini kiriting:");
-    if (input !== adminPass) {
-      alert("Ruxsat yo‘q!");
-      window.location.href = "index.html";
-      throw "";
-    }
+    const STORAGE_KEY_REQUESTS = "access_requests";
+    const STORAGE_KEY_APPROVED = "approved_users";
 
-    // Adminni avto qo'shish
-    let approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
-    if (!approved.some(u => u.login === "admin")) {
-      approved.push({ login: "admin", pass: "admin2025" });
-      localStorage.setItem("approved_users", JSON.stringify(approved));
-    }
+    function loadRequests() {
+      const requests = JSON.parse(localStorage.getItem(STORAGE_KEY_REQUESTS) || "[]");
+      const listContainer = document.getElementById("requestsList");
+      const noRequestsMsg = document.getElementById("noRequestsMsg");
+      document.getElementById("loadingMsg").classList.add("hidden");
+      listContainer.innerHTML = '';
 
-    function loadData() {
-      const requests = JSON.parse(localStorage.getItem("access_requests") || "[]");
-      const approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
-      const reqDiv = document.getElementById("requests");
-      const appDiv = document.getElementById("approved");
+      const pendingRequests = requests.filter(r => r.status === "pending");
 
-      // So'rovlar
-      reqDiv.innerHTML = "<h2 class='text-xl font-semibold mb-3'>Yangi so‘rovlar</h2>";
-      if (requests.length === 0) {
-        reqDiv.innerHTML += "<p class='text-gray-600'>Yangi so‘rov yo‘q.</p>";
-      } else {
-        requests.forEach((req, i) => {
-          const div = document.createElement("div");
-          div.className = "flex justify-between items-center p-4 bg-orange-50 rounded-lg border border-orange-200";
-          div.innerHTML = `
-            <div><strong>${req.login}</strong> – So‘rov yuborgan</div>
-            <button onclick="approve(${i})" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700">
-              Ruxsat berish
-            </button>
-          `;
-          reqDiv.appendChild(div);
-        });
+      if (pendingRequests.length === 0) {
+        noRequestsMsg.classList.remove("hidden");
+        return;
       }
+      noRequestsMsg.classList.add("hidden");
 
-      // Tasdiqlanganlar
-      appDiv.innerHTML = "<h2 class='text-xl font-semibold mb-3 mt-8'>Tasdiqlangan foydalanuvchilar</h2>";
-      approved.forEach(u => {
-        const div = document.createElement("div");
-        div.className = "p-3 bg-emerald-50 rounded-lg border border-emerald-200";
-        div.innerHTML = `<strong>${u.login}</strong> – Kirish huquqi bor`;
-        appDiv.appendChild(div);
+      pendingRequests.forEach(request => {
+        const requestItem = document.createElement('div');
+        requestItem.className = 'flex items-center justify-between p-4 border border-emerald-200 rounded-xl bg-white shadow-sm';
+        requestItem.innerHTML = `
+          <div>
+            <p class="font-semibold text-gray-800">${request.login}</p>
+            <span class="text-xs font-medium px-2 py-0.5 rounded-full status-pending">Kutilmoqda</span>
+          </div>
+          <div class="space-x-2">
+            <button onclick="approveRequest('${request.login}', '${request.pass}')" class="bg-green-500 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-600 transition">
+              Tasdiqlash
+            </button>
+            <button onclick="rejectRequest('${request.login}')" class="bg-red-500 text-white px-3 py-1 rounded-lg text-sm hover:bg-red-600 transition">
+              Rad etish
+            </button>
+          </div>
+        `;
+        listContainer.appendChild(requestItem);
       });
     }
 
-    function approve(index) {
-      const requests = JSON.parse(localStorage.getItem("access_requests") || "[]");
-      const user = requests[index];
-      requests.splice(index, 1);
+    function approveRequest(login, pass) {
+      // 1. So'rovni o'chirish
+      let requests = JSON.parse(localStorage.getItem(STORAGE_KEY_REQUESTS) || "[]");
+      requests = requests.filter(r => r.login !== login);
+      localStorage.setItem(STORAGE_KEY_REQUESTS, JSON.stringify(requests));
 
-      const approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
-      approved.push({ login: user.login, pass: user.pass });
+      // 2. Tasdiqlanganlar ro'yxatiga qo'shish
+      const approved = JSON.parse(localStorage.getItem(STORAGE_KEY_APPROVED) || "[]");
+      if (!approved.some(u => u.login === login)) {
+        approved.push({ login, pass });
+        localStorage.setItem(STORAGE_KEY_APPROVED, JSON.stringify(approved));
+        alert(`Foydalanuvchi ${login} tasdiqlandi va endi tizimga kira oladi.`);
+      }
 
-      localStorage.setItem("access_requests", JSON.stringify(requests));
-      localStorage.setItem("approved_users", JSON.stringify(approved));
-      loadData();
+      loadRequests();
     }
 
-    loadData();
+    function rejectRequest(login) {
+      let requests = JSON.parse(localStorage.getItem(STORAGE_KEY_REQUESTS) || "[]");
+      // So'rovni ro'yxatdan o'chirish
+      requests = requests.filter(r => r.login !== login);
+      localStorage.setItem(STORAGE_KEY_REQUESTS, JSON.stringify(requests));
+      alert(`Foydalanuvchi ${login} so'rovi rad etildi.`);
+      loadRequests();
+    }
+
+    // Sahifa yuklanganda so'rovlarni yuklash
+    window.onload = loadRequests;
   </script>
 </body>
 </html>
