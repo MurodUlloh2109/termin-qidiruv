@@ -9,27 +9,35 @@
 <body class="bg-gradient-to-br from-emerald-50 to-teal-50 min-h-screen p-6">
   <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8">
     <h1 class="text-3xl font-bold text-emerald-700 text-center mb-6">Admin Panel – Ruxsatlar</h1>
-    
+   
     <div id="requests" class="space-y-4 mb-8"></div>
     <div id="approved" class="space-y-2"></div>
   </div>
 
   <script>
     const adminPass = "admin2025";
-    const input = prompt("Admin parolini kiriting:");
+
+    // 1. Parolni so'rash
+    let input = prompt("Admin parolini kiriting:");
     if (input !== adminPass) {
       alert("Ruxsat yo‘q!");
       window.location.href = "index.html";
       throw "";
     }
 
-    // Adminni avto qo'shish
+    // 2. ADMINNI MAJBURIY QO'SHISH (har doim!)
     let approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
-    if (!approved.some(u => u.login === "admin")) {
-      approved.push({ login: "admin", pass: "admin2025" });
+    const adminExists = approved.some(u => u.login === "admin" && u.pass === adminPass);
+    
+    if (!adminExists) {
+      // Agar admin yo'q bo'lsa yoki paroli noto'g'ri bo'lsa
+      approved = approved.filter(u => u.login !== "admin"); // Eski adminni o'chirish
+      approved.push({ login: "admin", pass: adminPass });
       localStorage.setItem("approved_users", JSON.stringify(approved));
+      alert("Admin hisobi qayta yaratildi!");
     }
 
+    // 3. Ma'lumotlarni yuklash
     function loadData() {
       const requests = JSON.parse(localStorage.getItem("access_requests") || "[]");
       const approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
@@ -64,6 +72,7 @@
       });
     }
 
+    // 4. Ruxsat berish
     function approve(index) {
       const requests = JSON.parse(localStorage.getItem("access_requests") || "[]");
       const user = requests[index];
@@ -77,6 +86,7 @@
       loadData();
     }
 
+    // 5. Yuklash
     loadData();
   </script>
 </body>
