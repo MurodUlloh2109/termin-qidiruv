@@ -39,7 +39,7 @@
   </div>
 
   <script>
-    // 1. ADMINNI AVTO QO'SHISH
+    // ADMINNI AVTO QO'SHISH
     (function() {
       let approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
       if (!approved.some(u => u.login === "admin")) {
@@ -48,7 +48,7 @@
       }
     })();
 
-    // 2. KIRISH FUNKSIYASI (MUHIM!)
+    // KIRISH FUNKSIYASI
     function login(e) {
       e.preventDefault();
       const loginInput = document.getElementById("login").value.trim();
@@ -59,18 +59,17 @@
       const user = approved.find(u => u.login === loginInput && u.pass === pass);
 
       if (user) {
-        // BU JOY MUHIM: authenticated va current_user saqlanadi!
         localStorage.setItem("authenticated", "true");
         localStorage.setItem("current_user", loginInput);
         console.log("Kirish muvaffaqiyatli:", loginInput);
-        window.location.href = "index.html";
+        window.location.href = "index.html?v=" + Date.now(); // Cache oldini olish
       } else {
         error.classList.remove("hidden");
         error.textContent = "Ruxsat yo'q yoki noto'g'ri ma'lumot!";
       }
     }
 
-    // 3. TIZIM HOLATINI KO'RSATISH
+    // TIZIM HOLATINI KO'RSATISH
     function showStorage() {
       const data = {
         approved_users: localStorage.getItem("approved_users") || "[]",
@@ -79,6 +78,13 @@
       };
       alert(JSON.stringify(data, null, 2));
     }
+
+    // SAHIFA YUKLANGANDA MAJBURIY YANGILASH
+    window.addEventListener("load", function() {
+      if (localStorage.getItem("authenticated") === "true") {
+        document.getElementById("login").value = localStorage.getItem("current_user") || "";
+      }
+    });
   </script>
 </body>
 </html>
