@@ -32,35 +32,23 @@
 
     <p id="error" class="text-red-600 text-center mt-4 hidden">Noto'g'ri login yoki parol!</p>
 
-    <!-- MA'LUMOTLARNI YANGILASH TUGMASI -->
-    <button onclick="forceRefresh()" class="block mx-auto mt-4 text-sm text-blue-600 underline hover:text-blue-800 transition">
-      Ma’lumotlarni yangilash
+    <!-- MA'LUMOTLARNI KO'RISH TUGMASI -->
+    <button onclick="showStorage()" class="block mx-auto mt-4 text-xs text-blue-600 underline">
+      Tizim holatini ko‘rish
     </button>
   </div>
 
   <script>
-    // 1. ADMIN HISOBINI AVTO YARATISH
+    // 1. ADMINNI AVTO QO'SHISH
     (function() {
-      const approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
+      let approved = JSON.parse(localStorage.getItem("approved_users") || "[]");
       if (!approved.some(u => u.login === "admin")) {
         approved.push({ login: "admin", pass: "admin2025" });
         localStorage.setItem("approved_users", JSON.stringify(approved));
       }
     })();
 
-    // 2. MAJBURIY YANGILASH (boshqa oynadan o'zgarganda)
-    window.addEventListener("storage", function(e) {
-      if (e.key === "approved_users" || e.key === "access_requests") {
-        location.reload();
-      }
-    });
-
-    // 3. TUGMA ORQALI MAJBURIY YANGILASH
-    function forceRefresh() {
-      location.reload(true); // Kuchli yangilash
-    }
-
-    // 4. KIRISH FUNKSIYASI
+    // 2. KIRISH FUNKSIYASI (MUHIM!)
     function login(e) {
       e.preventDefault();
       const loginInput = document.getElementById("login").value.trim();
@@ -71,13 +59,25 @@
       const user = approved.find(u => u.login === loginInput && u.pass === pass);
 
       if (user) {
+        // BU JOY MUHIM: authenticated va current_user saqlanadi!
         localStorage.setItem("authenticated", "true");
         localStorage.setItem("current_user", loginInput);
+        console.log("Kirish muvaffaqiyatli:", loginInput);
         window.location.href = "index.html";
       } else {
         error.classList.remove("hidden");
         error.textContent = "Ruxsat yo'q yoki noto'g'ri ma'lumot!";
       }
+    }
+
+    // 3. TIZIM HOLATINI KO'RSATISH
+    function showStorage() {
+      const data = {
+        approved_users: localStorage.getItem("approved_users") || "[]",
+        authenticated: localStorage.getItem("authenticated") || "null",
+        current_user: localStorage.getItem("current_user") || "null"
+      };
+      alert(JSON.stringify(data, null, 2));
     }
   </script>
 </body>
