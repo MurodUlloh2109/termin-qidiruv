@@ -110,17 +110,16 @@
 
   <!-- 3. JAVASCRIPT (foydalanuvchi nomi + chiqish) -->
   <script>
-    const user = localStorage.getItem("current_user");
-    if (user && document.getElementById("username")) {
-      document.getElementById("username").textContent = user;
-    }
-
-    function logout() {
-      localStorage.removeItem("authenticated");
-      localStorage.removeItem("current_user");
-      window.location.href = "login.html";
-    }
-  </script>
+  const user = localStorage.getItem("current_user");
+  if (user && document.getElementById("username")) {
+    document.getElementById("username").textContent = user;
+  }
+  function logout() {
+    localStorage.removeItem("authenticated");
+    localStorage.removeItem("current_user");
+    window.location.href = "login.html";
+  }
+</script>
   
   <!-- Header -->
   <header class="text-center py-12 px-6">
