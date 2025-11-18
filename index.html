@@ -92,15 +92,15 @@
   </style>
 </head>
 <body class="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 min-h-screen">
- 
-  <!-- 1. HIMOYA (eng yuqorida!) -->
+
+  <!-- HIMOYA -->
   <script>
     if (!localStorage.getItem("authenticated")) {
       window.location.href = "login.html";
     }
   </script>
 
-  <!-- 2. SALOM + CHIQISH TUGMASI (eng yuqorida, absolute) -->
+  <!-- SALOM + CHIQISH -->
   <div class="absolute top-6 right-6 flex items-center space-x-3 z-50">
     <span class="text-emerald-700 text-sm">Salom, <strong id="username"></strong>!</span>
     <button onclick="logout()" class="bg-red-600 text-white px-4 py-1 rounded-lg text-sm hover:bg-red-700 transition">
@@ -108,19 +108,18 @@
     </button>
   </div>
 
-  <!-- 3. JAVASCRIPT (foydalanuvchi nomi + chiqish) -->
   <script>
-  const user = localStorage.getItem("current_user");
-  if (user && document.getElementById("username")) {
-    document.getElementById("username").textContent = user;
-  }
-  function logout() {
-    localStorage.removeItem("authenticated");
-    localStorage.removeItem("current_user");
-    window.location.href = "login.html";
-  }
-</script>
-  
+    const user = localStorage.getItem("current_user");
+    if (user && document.getElementById("username")) {
+      document.getElementById("username").textContent = user;
+    }
+    function logout() {
+      localStorage.removeItem("authenticated");
+      localStorage.removeItem("current_user");
+      window.location.href = "login.html";
+    }
+  </script>
+ 
   <!-- Header -->
   <header class="text-center py-12 px-6">
     <div class="max-w-5xl mx-auto">
@@ -136,23 +135,12 @@
     </div>
   </header>
 
-  <!-- Main Buttons Grid -->
+  <!-- Main Buttons Grid – YANGI TARTIB -->
   <main class="max-w-6xl mx-auto px-6 pb-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-      <!-- 1. Tarjimon, kril-lotin -->
-      <a href="https://tilmoch.ai/uz/translator" target="_blank" class="block card p-8 text-center group animate-fade-in" style="animation-delay: 0.1s">
-        <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:glow transition-all">
-          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m0 4v2m0 4v2m4 4h8m-4-4v4m0 0l-2-2m2 2l2-2"/>
-          </svg>
-        </div>
-        <h3 class="text-2xl font-bold text-green-700 mb-3">Tarjimon, kril-lotin</h3>
-        <p class="text-gray-600">Matnlarni kril-lotin va til o‘girish uchun onlayn vosita</p>
-      </a>
-
-      <!-- 2. Munozarali so‘zlar va terminlar -->
-      <a href="qidiruv18.html" class="block card p-8 text-center group animate-fade-in" style="animation-delay: 0.2s">
+      <!-- 1. Munozarali so‘zlar va terminlar -->
+      <a href="qidiruv18.html" class="block card p-8 text-center group animate-fade-in" style="animation-delay: 0.1s">
         <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-amber-400 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:glow transition-all">
           <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -162,19 +150,30 @@
         <p class="text-gray-600">Muhokama qilinayotgan va tasdiqlanmagan atamalar</p>
       </a>
 
-      <!-- 3. Matn farqini aniqlash -->
-      <div class="block card p-8 text-center group animate-fade-in opacity-70 cursor-not-allowed" style="animation-delay: 0.3s" onclick="event.preventDefault(); alert('Bu bo‘lim tez orada ochiladi!')">
-        <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:glow transition-all">
+      <!-- 2. Muhokama (YANGI) -->
+      <a href="#" class="block card p-8 text-center group animate-fade-in" style="animation-delay: 0.2s">
+        <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-red-400 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:glow transition-all">
           <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2m-4-8H9a2 2 0 00-2 2v6a2 2 0 002 2h2m4-8v8m-4-4h4"/>
           </svg>
         </div>
-        <h3 class="text-2xl font-bold text-emerald-700 mb-3">Matn farqini aniqlash</h3>
-        <p class="text-gray-600">Ikki matn o‘rtasidagi farqlarni aniqlash va taqqoslash</p>
-      </div>
+        <h3 class="text-2xl font-bold text-red-700 mb-3">Muhokama</h3>
+        <p class="text-gray-600">Munozarali atamalarni muhokama qilish platformasi</p>
+      </a>
+
+      <!-- 3. Tarjimon, kril-lotin -->
+      <a href="https://tilmoch.ai/uz/translator" target="_blank" class="block card p-8 text-center group animate-fade-in" style="animation-delay: 0.3s">
+        <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:glow transition-all">
+          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m0 4v2m0 4v2m4 4h8m-4-4v4m0 0l-2-2m2 2l2-2"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-green-700 mb-3">Tarjimon, kril-lotin</h3>
+        <p class="text-gray-600">Matnlarni kril-lotin va til o‘girish uchun onlayn vosita</p>
+      </a>
 
       <!-- 4. Maqolalar ro‘yxati -->
-      <a href="#" class="block card p-8 text-center group opacity-70 cursor-not-allowed" onclick="alert('Tez orada!')">
+      <a href="#" class="block card p-8 text-center group opacity-70 cursor-not-allowed animate-fade-in" style="animation-delay: 0.4s" onclick="event.preventDefault(); alert('Tez orada!')">
         <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg">
           <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
@@ -184,8 +183,19 @@
         <p class="text-gray-600">Davlat farmakopeyasida mavjud barcha maqolalar</p>
       </a>
 
-      <!-- 5. Qo‘shimcha -->
-      <a href="#" class="block card p-8 text-center group opacity-70 cursor-not-allowed" onclick="alert('Tez orada!')">
+      <!-- 5. Matn farqini aniqlash (endilikda faol) -->
+      <a href="https://www.ilovepdf.com/compare-pdf" target="_blank" class="block card p-8 text-center group animate-fade-in" style="animation-delay: 0.5s">
+        <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:glow transition-all">
+          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"/>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-emerald-700 mb-3">Matn farqini aniqlash</h3>
+        <p class="text-gray-600">Ikki matn o‘rtasidagi farqlarni aniqlash va taqqoslash</p>
+      </a>
+
+      <!-- 6. Qo‘shimcha -->
+      <a href="#" class="block card p-8 text-center group opacity-70 cursor-not-allowed animate-fade-in" style="animation-delay: 0.6s" onclick="event.preventDefault(); alert('Tez orada!')">
         <div class="w-20 h-20 mx-auto mb-5 bg-gradient-to-br from-purple-400 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg">
           <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
