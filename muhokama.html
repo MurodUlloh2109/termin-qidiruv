@@ -3,154 +3,203 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Muhokama platformasi</title>
+  <title>Muhokama platformasi :: DFIB</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
   <style>
-    .translate-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 20px 40px rgba(0,0,0,0.2); z-index: 1000; max-width: 500px; }
-    .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999; }
+    .translate-popup {
+      display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      z-index: 1000; max-width: 90%; width: 520px;
+    }
+    .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; }
+    .card { background: white; border-radius: 1rem; box-shadow: 0 10px 25px rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); }
   </style>
 </head>
 <body class="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 min-h-screen">
-  <!-- Firebase config (login.html bilan bir xil) -->
-  <script>
-    const firebaseConfig = { /* BU YERGA o‘z config’ingizni qo‘ying */ };
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
 
-    // Agar kirmagan bo‘lsa login ga yuborish
-    auth.onAuthStateChanged(user => {
-      if (!user) window.location.href = "login.html";
-      else document.getElementById("userEmail").textContent = user.email;
-    });
-  </script>
+  <!-- Ortga tugmasi (o'ng yuqori burchak) -->
+  <div class="fixed top-6 right-6 z-50">
+    <a href="index.html" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition flex items-center gap-2">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+      </svg>
+      Ortga
+    </a>
+  </div>
 
-  <div class="max-w-7xl mx-auto px-6 py-12">
+  <div class="max-w-screen-2xl mx-auto px-6 py-12">
     <div class="text-center mb-12">
-      <h1 class="text-4xl font-bold text-emerald-700 mb-4">
-        Davlat farmakopeyasini ishlab chiqishda duch kelinadigan matnlardagi munozarali so'zlar muhokama platformasi
+      <h1 class="text-4xl md:text-5xl font-bold text-emerald-800 mb-4">
+        Davlat farmakopeyasini ishlab chiqishda duch kelinadigan matnlardagi munozarali so‘zlar muhokama platformasi
       </h1>
-      <p class="text-lg text-gray-600">Salom, <strong id="userEmail"></strong>! Chiqish uchun <a href="#" onclick="auth.signOut();">bu yerda</a> bosing.</p>
+      <p class="text-lg text-gray-700">
+        Salom, <strong class="text-emerald-600">Foydalanuvchi</strong>! 
+        <a href="login.html" class="text-red-600 underline">Chiqish</a>
+      </p>
     </div>
 
-    <!-- 1. Yopiq munozaralar (tugallangan) -->
-    <h2 class="text-3xl font-semibold text-gray-800 mb-6">1. Yakunlangan munozaralar (Yopiq)</h2>
-    <div class="overflow-x-auto mb-16">
-      <table class="w-full bg-white rounded-xl shadow-lg" id="closedTable">
-        <thead class="bg-emerald-600 text-white">
-          <tr>
-            <th class="px-4 py-3">№</th>
-            <th class="px-4 py-3">Munozarali so‘z</th>
-            <th class="px-4 py-3">Kelgan matn raqami</th>
-            <th class="px-4 py-3">Rus tilida</th>
-            <th class="px-4 py-3">O‘zbek tilida</th>
-            <th class="px-4 py-3">Komentariya</th>
-            <th class="px-4 py-3">Yakuniy javob</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="hover:bg-gray-50">
-            <td class="px-4 py-3 text-center">1</td>
-            <td class="px-4 py-3">Reference</td>
-            <td class="px-4 py-3 text-center">3.2.3.</td>
-            <td class="px-4 py-3">
-              <span class="cursor-pointer text-blue-600 underline" onclick="showTranslate('The reference standard is trust.', 'Эталонный стандарт — доверие.', 'Etalon eritma - ishonch.')">
-                1.Стандарт<br>2.Эталон
-              </span>
-            </td>
-            <td class="px-4 py-3">
-              1.Standart<br>2.Etalon<br>3.
-            </td>
-            <td class="px-4 py-3 text-center">
-              <button class="bg-gray-500 text-white px-4 py-1 rounded" disabled>Yopiq</button>
-            </td>
-            <td class="px-4 py-3 text-center font-semibold text-emerald-700">Standart</td>
-          </tr>
-          <!-- boshqa qatorlar qo‘shiladi -->
-        </tbody>
-      </table>
-    </div>
+    <!-- Asosiy kontent: Sidebar (chap) + Jadval (o'ng) -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+      
+      <!-- CHAP TARAF: SIDEBAR -->
+      <aside class="space-y-6">
+        <div id="manbaBox" class="card p-6 text-center text-xl font-bold text-emerald-700 border-2 border-emerald-400 bg-emerald-50">
+          Manba
+        </div>
 
-    <!-- 2. Ochiq munozaralar -->
-    <h2 class="text-3xl font-semibold text-gray-800 mb-6">2. Davom etayotgan munozaralar (Ochiq)</h2>
-    <div class="overflow-x-auto">
-      <table class="w-full bg-white rounded-xl shadow-lg" id="openTable">
-        <thead class="bg-red-600 text-white">
-          <tr>
-            <th class="px-4 py-3">№</th>
-            <th class="px-4 py-3">Munozarali so‘z</th>
-            <th class="px-4 py-3">Kelgan matn raqami</th>
-            <th class="px-4 py-3">Rus tilida</th>
-            <th class="px-4 py-3">O‘zbek tilida</th>
-            <th class="px-4 py-3">Komentariya</th>
-            <th class="px-4 py-3">Yakuniy javob</th>
-          </tr>
-        </thead>
-        <tbody id="openTbody">
-          <!-- Firebase dan keladi -->
-        </tbody>
-      </table>
+        <div class="card p-6">
+          <h3 class="text-xl font-bold text-emerald-700 mb-4 flex items-center gap-2">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+            Izoh
+          </h3>
+          <ul class="text-gray-700 space-y-3 text-sm leading-relaxed">
+            <li><span class="font-bold text-green-600">1-jadval</span> – Tahriiryat Kengashi muhobold text-green-600hokamasidan o‘tgan munozarali so‘zlar ro‘yxati</li>
+            <li><span class="font-bold text-amber-600">2-jadval</span> – Tahriiryat Kengashi muhokamasida bo‘lgan munozarali so‘zlar ro‘yxati</li>
+          </ul>
+        </div>
+
+        <div class="card p-6">
+          <h3 class="text-xl font-bold text-emerald-700 mb-6">Foydali manbalar</h3>
+          <div class="grid grid-cols-2 gap-5">
+            <a href="https://tilmoch.ai/uz/translator" target="_blank" class="text-center group">
+              <img src="https://tilmoch.ai/favicon.ico" alt="Tilmoch" class="w-16 h-16 mx-auto rounded-xl shadow-lg group-hover:scale-110 transition">
+              <span class="block mt-2 text-xs font-medium text-emerald-700">Tilmoch</span>
+            </a>
+            <a href="https://www.multitran.com/" target="_blank" class="text-center group">
+              <img src="https://www.multitran.com/m.png" alt="Multitran" class="w-16 h-16 mx-auto rounded-xl shadow-lg group-hover:scale-110 transition">
+              <span class="block mt-2 text-xs font-medium text-emerald-700">Multitran</span>
+            </a>
+            <a href="https://lex.uz/" target="_blank" class="text-center group">
+              <img src="https://lex.uz/favicon.ico" alt="Lex.uz" class="w-16 h-16 mx-auto rounded-xl shadow-lg group-hover:scale-110 transition">
+              <span class="block mt-2 text-xs font-medium text-emerald-700">Lex.uz</span>
+            </a>
+            <a href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank" class="text-center group">
+              <img src="https://pubchem.ncbi.nlm.nih.gov/favicon.ico" alt="PubChem" class="w-16 h-16 mx-auto rounded-xl shadow-lg group-hover:scale-110 transition">
+              <span class="block mt-2 text-xs font-medium text-emerald-700">PubChem</span>
+            </a>
+            <a href="https://www.rxlist.com/drug-medical-dictionary/article.htm" target="_blank" class="text-center group">
+              <img src="https://www.rxlist.com/favicon.ico" alt="RxList" class="w-16 h-16 mx-auto rounded-xl shadow-lg group-hover:scale-110 transition">
+              <span class="block mt-2 text-xs font-medium text-emerald-700">RxList</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- O'NG TARAF: JADVAL -->
+      <div class="lg:col-span-3 space-y-16">
+
+        <!-- 1. Yakunlangan munozaralar (Yopiq) -->
+        <div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">1. Yakunlangan munozaralar (Yopiq)</h2>
+          <div class="overflow-x-auto bg-white rounded-2xl shadow-xl">
+            <table class="w-full">
+              <thead class="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white">
+                <tr>
+                  <th class="px-6 py-4">№</th>
+                  <th class="px-6 py-4">Munozarali so‘z</th>
+                  <th class="px-6 py-4">Kelgan matn raqami</th>
+                  <th class="px-6 py-4">Rus tilida</th>
+                  <th class="px-6 py-4">O‘zbek tilida</th>
+                  <th class="px-6 py-4">Komentariya</th>
+                  <th class="px-6 py-4">Yakuniy javob</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr class="hover:bg-emerald-50">
+                  <td class="px-6 py-4 text-center">1</td>
+                  <td class="px-6 py-4 font-semibold text-lg">
+                    <span class="text-blue-700 underline cursor-pointer hover:text-blue-900"
+                          onclick="showTranslate('The reference standard is trust.', 'Эталонный стандарт — доверие.', 'Etalon eritma – ishonch.')">
+                      Reference
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-center">3.2.3.</td>
+                  <td class="px-6 py-4">1. Стандарт<br><span class="text-blue-600">2. Эталон</span></td>
+                  <td class="px-6 py-4">1. Standart<br>2. Etalon<br>3.</td>
+                  <td class="px-6 py-4 text-center">
+                    <button class="bg-gray-500 text-white px-6 py-2 rounded-lg cursor-not-allowed">Yopiq</button>
+                  </td>
+                  <td class="px-6 py-4 text-center font-bold text-emerald-700 text-xl">Standart</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 2. Davom etayotgan munozaralar (Ochiq) -->
+        <div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-6">2. Davom etayotgan munozaralar (Ochiq)</h2>
+          <div class="overflow-x-auto bg-white rounded-2xl shadow-xl">
+            <table class="w-full">
+              <thead class="bg-gradient-to-r from-amber-500 to-orange-600 text-white">
+                <tr>
+                  <th class="px-6 py-4">№</th>
+                  <th class="px-6 py-4">Munozarali so‘z</th>
+                  <th class="px-6 py-4">Kelgan matn raqami</th>
+                  <th class="px-6 py-4">Rus tilida</th>
+                  <th class="px-6 py-4">O‘zbek tilida</th>
+                  <th class="px-6 py-4">Komentariya</th>
+                  <th class="px-6 py-4">Yakuniy javob</th>
+                </tr>
+              </thead>
+              <tbody id="openTableBody">
+                <tr class="hover:bg-amber-50">
+                  <td class="px-6 py-4 text-center">1</td>
+                  <td class="px-6 py-4 font-semibold text-lg">
+                    <span class="text-blue-700 underline cursor-pointer hover:text-blue-900"
+                          onclick="showTranslate('Assay of the active substance.', 'Определение содержания действующего вещества.', 'Faol moddaning miqdorini aniqlash.')">
+                      Assay
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-center">5.1.2.</td>
+                  <td class="px-6 py-4">1. Анализ<br>2. Количественное определение<br>3. Титрование</td>
+                  <td class="px-6 py-4">1. Tahlil<br>2. Miqdoriy aniqlash<br>3. Titrlash</td>
+                  <td class="px-6 py-4 text-center">
+                    <button onclick="addComment()" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-medium transition">
+                      Ochiq – Izoh qoldirish
+                    </button>
+                  </td>
+                  <td class="px-6 py-4 text-center text-gray-400 text-lg">—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
   <!-- Tarjima popup -->
-  <div class="overlay" id="overlay" onclick="this.style.display='none'; document.getElementById('translatePopup').style.display='none'"></div>
+  <div class="overlay" id="overlay" onclick="closeTranslate()"></div>
   <div class="translate-popup" id="translatePopup">
-    <h3 class="text-2xl font-bold mb-4 text-emerald-700">Tarjimalar</h3>
-    <div id="translateContent"></div>
-    <button class="mt-6 bg-emerald-600 text-white px-6 py-2 rounded-lg" onclick="document.getElementById('overlay').style.display='none'; document.getElementById('translatePopup').style.display='none'">Yopish</button>
+    <h3 class="text-2xl font-bold text-emerald-700 mb-6">Kontekstda qo‘llanilishi</h3>
+    <div id="translateContent" class="space-y-4 text-lg"></div>
+    <div class="text-right mt-8">
+      <button onclick="closeTranslate()" class="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition">
+        Yopish
+      </button>
+    </div>
   </div>
 
   <script>
     function showTranslate(eng, rus, uz) {
       document.getElementById("translateContent").innerHTML = `
-        <p><strong>Inglizcha:</strong> ${eng}</p>
-        <p class="mt-2"><strong>Ruscha:</strong> ${rus}</p>
-        <p class="mt-2"><strong>O‘zbekcha:</strong> ${uz}</p>
+        <p><strong class="text-gray-700">Inglizcha:</strong> ${eng}</p>
+        <p><strong class="text-gray-700">Ruscha:</strong> ${rus}</p>
+        <p><strong class="text-gray-700">O‘zbekcha:</strong> ${uz}</p>
       `;
       document.getElementById("overlay").style.display = "block";
       document.getElementById("translatePopup").style.display = "block";
     }
-
-    // Ochiq munozaralarni Firestore dan yuklash va komment qoldirish
-    const openTbody = document.getElementById("openTbody");
-
-    db.collection("openDiscussions").orderBy("timestamp", "desc").onSnapshot(snapshot => {
-      openTbody.innerHTML = "";
-      snapshot.forEach((doc, index) => {
-        const d = doc.data();
-        const row = `
-          <tr class="hover:bg-gray-50">
-            <td class="px-4 py-3 text-center">${index + 1}</td>
-            <td class="px-4 py-3 font-semibold">${d.word}</td>
-            <td class="px-4 py-3 text-center">${d.docNumber}</td>
-            <td class="px-4 py-3">
-              <span class="cursor-pointer text-blue-600 underline" onclick="showTranslate('${d.engSentence}', '${d.rusSentence}', '${d.uzSentence}')">
-                ${d.rusOptions.replace(/\n/g, "<br>")}
-              </span>
-            </td>
-            <td class="px-4 py-3">${d.uzOptions.replace(/\n/g, "<br>")}</td>
-            <td class="px-4 py-3 text-center">
-              <button onclick="addComment('${doc.id}')" class="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">Ochiq</button>
-            </td>
-            <td class="px-4 py-3 text-center text-gray-400">—</td>
-          </tr>`;
-        openTbody.innerHTML += row;
-      });
-    });
-
-    function addComment(docId) {
-      const comment = prompt("Izohingizni kiriting:");
-      if (comment) {
-        const userEmail = auth.currentUser.email;
-        db.collection("openDiscussions").doc(docId).collection("comments").add({
-          text: comment,
-          author: userEmail,
-          timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        }).then(() => alert("Izoh qoldirildi!"));
+    function closeTranslate() {
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("translatePopup").style.display = "none";
+    }
+    function addComment() {
+      const comment = prompt("Izohingizni yozing:");
+      if (comment && comment.trim()) {
+        alert("Izohingiz qabul qilindi: «" + comment.trim() + "»\n(Kelajakda bu yerda Firebase orqali saqlanadi)");
       }
     }
   </script>
