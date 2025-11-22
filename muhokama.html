@@ -13,6 +13,14 @@
     }
     .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; }
     .card { background: white; border-radius: 1rem; box-shadow: 0 10px 25px rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); }
+    .form-input {
+      @apply w-full px-6 py-4 rounded-2xl bg-white/25 backdrop-blur-lg border border-white/30 
+             placeholder-white/60 text-white focus:outline-none focus:ring-4 focus:ring-white/50 
+             transition-all duration-300 text-lg;
+    }
+    .form-label {
+      @apply block text-xl font-bold mb-3 text-white drop-shadow-md;
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 min-h-screen">
@@ -20,9 +28,6 @@
   <!-- Ortga tugmasi -->
   <div class="fixed top-6 right-6 z-50">
     <a href="index.html" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition flex items-center gap-2">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-      </svg>
       Ortga
     </a>
   </div>
@@ -35,8 +40,7 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
-      
-      <!-- SIDEBAR (chap) -->
+      <!-- SIDEBAR (o'zgarmadi) -->
       <aside class="space-y-6">
         <div id="manbaBox" class="card p-6 text-center text-xl font-bold text-emerald-700 border-2 border-emerald-400 bg-emerald-50">
           Manba
@@ -67,18 +71,14 @@
               <img src="https://pubchem.ncbi.nlm.nih.gov/favicon.ico" alt="PubChem" class="w-16 h-16 mx-auto rounded-xl shadow-lg group-hover:scale-110 transition">
               <span class="block mt-2 text-xs font-medium text-emerald-700">PubChem</span>
             </a>
-            <a href="https://www.rxlist.com/drug-medical-dictionary/article.htm" target="_blank" class="text-center group">
-              <img src="https://www.rxlist.com/favicon.ico" alt="RxList" class="w-16 h-16 mx-auto rounded-xl shadow-lg group-hover:scale-110 transition">
-              <span class="block mt-2 text-xs font-medium text-emerald-700">RxList</span>
-            </a>
           </div>
         </div>
       </aside>
 
-      <!-- JADVAL (o'ng) -->
+      <!-- JADVAL + YANGI SHAKL -->
       <div class="lg:col-span-3 space-y-16">
 
-        <!-- 1. Yakunlangan -->
+        <!-- 1-jadval (yakunlangan) – o‘zgarmadi -->
         <div>
           <h2 class="text-3xl font-bold text-gray-800 mb-6">1. Muhokamasi yakunlangan munozarali so'zlar ro'yxati</h2>
           <div class="overflow-x-auto bg-white rounded-2xl shadow-xl">
@@ -116,20 +116,14 @@
           </div>
         </div>
 
-        <!-- 2. Davom etayotgan -->
+        <!-- 2-jadval (davom etayotgan) -->
         <div>
           <h2 class="text-3xl font-bold text-gray-800 mb-6">2. Muhokamasi davom etayotgan munozarali so'zlar ro'yxati</h2>
           <div class="overflow-x-auto bg-white rounded-2xl shadow-xl mb-12">
             <table class="w-full">
               <thead class="bg-gradient-to-r from-amber-500 to-orange-600 text-white">
-                <tr>
-                  <th class="px-6 py-4">№</th>
-                  <th class="px-6 py-4">Munozarali so‘z</th>
-                  <th class="px-6 py-4">Kelgan matn raqami</th>
-                  <th class="px-6 py-4">Rus tilida</th>
-                  <th class="px-6 py-4">O‘zbek tilida</th>
-                  <th class="px-6 py-4">Komentariya</th>
-                  <th class="px-6 py-4">Yakuniy javob</th>
+                <tr><th class="px-6 py-4">№</th><th class="px-6 py-4">Munozarali so‘z</th><th class="px-6 py-4">Kelgan matn raqami</th>
+                    <th class="px-6 py-4">Rus tilida</th><th class="px-6 py-4">O‘zbek tilida</th><th class="px-6 py-4">Komentariya</th><th class="px-6 py-4">Yakuniy javob</th>
                 </tr>
               </thead>
               <tbody id="openTableBody">
@@ -142,8 +136,8 @@
                     </span>
                   </td>
                   <td class="px-6 py-4 text-center">5.1.2.</td>
-                  <td class="px-6 py-4">1. Анализ<br>2. Количественное определение<br>3. Титрование</td>
-                  <td class="px-6 py-4">1. Tahlil<br>2. Miqdoriy aniqlash<br>3. Titrlash</td>
+                  <td class="px-6 py-4">1. Анализ<br>2. Количественное определение</td>
+                  <td class="px-6 py-4">1. Tahlil<br>2. Miqdoriy aniqlash</td>
                   <td class="px-6 py-4 text-center">
                     <button onclick="addComment()" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-medium transition">
                       Ochiq – Izoh qoldirish
@@ -155,29 +149,113 @@
             </table>
           </div>
 
-          <!-- YANGI SHAKL (ko'k rangli) -->
-          <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl shadow-2xl p-8 text-white">
-            <h2 class="text-3xl font-bold mb-8 text-center">Yangi munozarali so‘z qo‘shish</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div class="space-y-6">
+          <!-- YANGI SHAKL – RASMDAGIDAKI KO‘RINISH -->
+          <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl shadow-2xl p-10 text-white overflow-hidden">
+            <h2 class="text-4xl font-bold text-center mb-10 drop-shadow-lg">Yangi munozarali so‘z qo‘shish</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+              <!-- CHAP TARAF: Ingliz + Rus -->
+              <div class="space-y-8">
+                <!-- Inglizcha -->
                 <div>
-                  <label class="block text-lg font-semibold mb-2">Ingliz tilida</label>
-                  <input type="text" id="newEng" placeholder="Masalan: Dissolution" class="w-full px-5 py-3 rounded-lg bg-white/20 backdrop-blur placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-white/50 text-white"/>
+                  <label class="form-label">Ingliz tilida</label>
+                  <div class="grid grid-cols-2 gap-4">
+                    <input type="text" id="engWord" placeholder="Masalan: Dissolution" class="form-input"/>
+                    <input type="text" id="engContext" placeholder="Gap: The dissolution test is performed..." class="form-input"/>
+                  </div>
                 </div>
+
+                <!-- Ruscha -->
                 <div>
-                  <label class="block text-lg font-semibold mb-2">Rus tilida</label>
-                  <textarea id="newRus" rows="4" placeholder="1. Растворение&#10;2. Высвобождение" class="w-full px-5 py-3 rounded-lg bg-white/20 backdrop-blur placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-white/50 text-white"></textarea>
+                  <label class="form-label">Rus tilida</label>
+                  <textarea id="rusVariants" rows="5" placeholder="1. Растворение&#10;2. Высвобождение&#10;3. ..." class="form-input resize-none"></textarea>
                 </div>
               </div>
-              <div class="space-y-6">
+
+              <!-- O‘NG TARAF: O‘zbek + Matn raqami -->
+              <div class="space-y-8">
+                <!-- O‘zbekcha -->
                 <div>
-                  <label class="block text-lg font-semibold mb-2">O‘zbek tilida</label>
-                  <textarea id="newUzb" rows="4" placeholder="1. Eritish&#10;2. Chiqarilish" class="w-full px-5 py-3 rounded-lg bg-white/20 backdrop-blur placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-white/50 text-white"></textarea>
+                  <label class="form-label">O‘zbek tilida</label>
+                  <textarea id="uzbVariants" rows="5" placeholder="1. Eritish&#10;2. Chiqarilish&#10;3. ..." class="form-input resize-none"></textarea>
                 </div>
+
+                <!-- Kelgan matn raqami -->
                 <div>
-                  <label class="block text-lg font-semibold mb-2">Kelgan matn raqami</label>
-                  <input type="text" id="newMatn" placeholder="Masalan: 2.9.3." class="w-full px-5 py-3 rounded-lg bg-white/20 backdrop-blur placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-white/50 text-white"/>
+                  <label class="form-label">Kelgan matn raqami</label>
+                  <input type="text" id="matnRaqami" placeholder="Masalan: 2.9.3." class="form-input"/>
                 </div>
               </div>
             </div>
-            <div class="text-center mt-
+
+            <!-- YUBORISH TUGMASI (pastda o‘rtada) -->
+            <div class="text-center mt-12">
+              <button onclick="submitNewTerm()" class="bg-white text-blue-700 hover:bg-blue-50 font-bold text-2xl px-16 py-5 rounded-2xl shadow-2xl transition transform hover:scale-105 hover:shadow-3xl">
+                Yuborish
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tarjima popup (o‘zgarmadi) -->
+  <div class="overlay" id="overlay" onclick="closeTranslate()"></div>
+  <div class="translate-popup" id="translatePopup">
+    <h3 class="text-2xl font-bold text-emerald-700 mb-6">Kontekstda qo‘llanilishi</h3>
+    <div id="translateContent" class="space-y-4 text-lg"></div>
+    <div class="text-right mt-8">
+      <button onclick="closeTranslate()" class="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition">
+        Yopish
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function showTranslate(eng, rus, uz) {
+      document.getElementById("translateContent").innerHTML = `
+        <p><strong class="text-gray-700">Inglizcha:</strong> ${eng}</p>
+        <p><strong class="text-gray-700">Ruscha:</strong> ${rus}</p>
+        <p><strong class="text-gray-700">O‘zbekcha:</strong> ${uz}</p>
+      `;
+      document.getElementById("overlay").style.display = "block";
+      document.getElementById("translatePopup").style.display = "block";
+    }
+    function closeTranslate() {
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("translatePopup").style.display = "none";
+    }
+    function addComment() {
+      const comment = prompt("Izohingizni yozing:");
+      if (comment?.trim()) alert("Izohingiz qabul qilindi: «" + comment.trim() + "»");
+    }
+
+    // Yangi so‘z yuborish
+    function submitNewTerm() {
+      const engWord = document.getElementById("engWord").value.trim();
+      const engContext = document.getElementById("engContext").value.trim();
+      const rusVariants = document.getElementById("rusVariants").value.trim();
+      const uzbVariants = document.getElementById("uzbVariants").value.trim();
+      const matnRaqami = document.getElementById("matnRaqami").value.trim();
+
+      if (!engWord || !engContext || !rusVariants || !uzbVariants || !matnRaqami) {
+        alert("Iltimos, barcha maydonlarni to‘ldiring!");
+        return;
+      }
+
+      alert(`Yangi munozarali so‘z muvaffaqiyatli yuborildi!\n\n` +
+        `So‘z: ${engWord}\nKontekst: ${engContext}\nMatn raqami: ${matnRaqami}\n\n` +
+        `Ruscha: ${rusVariants.replace(/\n/g, ' | ')}\nO‘zbekcha: ${uzbVariants.replace(/\n/g, ' | ')}`);
+
+      // Maydonlarni tozalash
+      document.getElementById("engWord").value = "";
+      document.getElementById("engContext").value = "";
+      document.getElementById("rusVariants").value = "";
+      document.getElementById("uzbVariants").value = "";
+      document.getElementById("matnRaqami").value = "";
+    }
+  </script>
+</body>
+</html>
