@@ -17,7 +17,7 @@
 </head>
 <body class="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 min-h-screen">
 
-  <!-- Ortga tugmasi (o'ng yuqori burchak) -->
+  <!-- Ortga tugmasi -->
   <div class="fixed top-6 right-6 z-50">
     <a href="index.html" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition flex items-center gap-2">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -32,30 +32,22 @@
       <h1 class="text-4xl md:text-5xl font-bold text-emerald-800 mb-4">
         Davlat farmakopeyasini ishlab chiqishda duch kelinadigan matnlardagi munozarali so‘zlarning muhokama bo'limi
       </h1>
-      <p class="text-lg text-gray-700">
-      </p>
     </div>
 
-    <!-- Asosiy kontent: Sidebar (chap) + Jadval (o'ng) -->
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
       
-      <!-- CHAP TARAF: SIDEBAR -->
+      <!-- SIDEBAR (chap) -->
       <aside class="space-y-6">
         <div id="manbaBox" class="card p-6 text-center text-xl font-bold text-emerald-700 border-2 border-emerald-400 bg-emerald-50">
           Manba
         </div>
-
         <div class="card p-6">
-          <h3 class="text-xl font-bold text-emerald-700 mb-4 flex items-center gap-2">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
-            Izoh
-          </h3>
+          <h3 class="text-xl font-bold text-emerald-700 mb-4">Izoh</h3>
           <ul class="text-gray-700 space-y-3 text-sm leading-relaxed">
             <li><span class="font-bold text-green-600">1-jadval</span> – Tahriiryat Kengashi muhokamasidan o‘tgan munozarali so‘zlar ro‘yxati</li>
             <li><span class="font-bold text-amber-600">2-jadval</span> – Tahriiryat Kengashi muhokamasida bo‘lgan munozarali so‘zlar ro‘yxati</li>
           </ul>
         </div>
-
         <div class="card p-6">
           <h3 class="text-xl font-bold text-emerald-700 mb-6">Foydali manbalar</h3>
           <div class="grid grid-cols-2 gap-5">
@@ -83,10 +75,10 @@
         </div>
       </aside>
 
-      <!-- O'NG TARAF: JADVAL -->
+      <!-- JADVAL (o'ng) -->
       <div class="lg:col-span-3 space-y-16">
 
-        <!-- 1. Yakunlangan munozaralar (Yopiq) -->
+        <!-- 1. Yakunlangan -->
         <div>
           <h2 class="text-3xl font-bold text-gray-800 mb-6">1. Muhokamasi yakunlangan munozarali so'zlar ro'yxati</h2>
           <div class="overflow-x-auto bg-white rounded-2xl shadow-xl">
@@ -113,7 +105,7 @@
                   </td>
                   <td class="px-6 py-4 text-center">3.2.3.</td>
                   <td class="px-6 py-4">1. Стандарт<br><span class="text-blue-600">2. Эталон</span></td>
-                  <td class="px-6 py-4">1. Standart<br>2. Etalon<br>3.</td>
+                  <td class="px-6 py-4">1. Standart<br>2. Etalon</td>
                   <td class="px-6 py-4 text-center">
                     <button class="bg-gray-500 text-white px-6 py-2 rounded-lg cursor-not-allowed">Yopiq</button>
                   </td>
@@ -124,10 +116,10 @@
           </div>
         </div>
 
-        <!-- 2. Davom etayotgan munozaralar (Ochiq) -->
+        <!-- 2. Davom etayotgan -->
         <div>
           <h2 class="text-3xl font-bold text-gray-800 mb-6">2. Muhokamasi davom etayotgan munozarali so'zlar ro'yxati</h2>
-          <div class="overflow-x-auto bg-white rounded-2xl shadow-xl">
+          <div class="overflow-x-auto bg-white rounded-2xl shadow-xl mb-12">
             <table class="w-full">
               <thead class="bg-gradient-to-r from-amber-500 to-orange-600 text-white">
                 <tr>
@@ -162,44 +154,30 @@
               </tbody>
             </table>
           </div>
-        </div>
 
-      </div>
-    </div>
-  </div>
-
-  <!-- Tarjima popup -->
-  <div class="overlay" id="overlay" onclick="closeTranslate()"></div>
-  <div class="translate-popup" id="translatePopup">
-    <h3 class="text-2xl font-bold text-emerald-700 mb-6">Kontekstda qo‘llanilishi</h3>
-    <div id="translateContent" class="space-y-4 text-lg"></div>
-    <div class="text-right mt-8">
-      <button onclick="closeTranslate()" class="bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition">
-        Yopish
-      </button>
-    </div>
-  </div>
-
-  <script>
-    function showTranslate(eng, rus, uz) {
-      document.getElementById("translateContent").innerHTML = `
-        <p><strong class="text-gray-700">Inglizcha:</strong> ${eng}</p>
-        <p><strong class="text-gray-700">Ruscha:</strong> ${rus}</p>
-        <p><strong class="text-gray-700">O‘zbekcha:</strong> ${uz}</p>
-      `;
-      document.getElementById("overlay").style.display = "block";
-      document.getElementById("translatePopup").style.display = "block";
-    }
-    function closeTranslate() {
-      document.getElementById("overlay").style.display = "none";
-      document.getElementById("translatePopup").style.display = "none";
-    }
-    function addComment() {
-      const comment = prompt("Izohingizni yozing:");
-      if (comment && comment.trim()) {
-        alert("Izohingiz qabul qilindi: «" + comment.trim() + "»\n(Kelajakda bu yerda Firebase orqali saqlanadi)");
-      }
-    }
-  </script>
-</body>
-</html>
+          <!-- YANGI SHAKL (ko'k rangli) -->
+          <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl shadow-2xl p-8 text-white">
+            <h2 class="text-3xl font-bold mb-8 text-center">Yangi munozarali so‘z qo‘shish</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="space-y-6">
+                <div>
+                  <label class="block text-lg font-semibold mb-2">Ingliz tilida</label>
+                  <input type="text" id="newEng" placeholder="Masalan: Dissolution" class="w-full px-5 py-3 rounded-lg bg-white/20 backdrop-blur placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-white/50 text-white"/>
+                </div>
+                <div>
+                  <label class="block text-lg font-semibold mb-2">Rus tilida</label>
+                  <textarea id="newRus" rows="4" placeholder="1. Растворение&#10;2. Высвобождение" class="w-full px-5 py-3 rounded-lg bg-white/20 backdrop-blur placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-white/50 text-white"></textarea>
+                </div>
+              </div>
+              <div class="space-y-6">
+                <div>
+                  <label class="block text-lg font-semibold mb-2">O‘zbek tilida</label>
+                  <textarea id="newUzb" rows="4" placeholder="1. Eritish&#10;2. Chiqarilish" class="w-full px-5 py-3 rounded-lg bg-white/20 backdrop-blur placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-white/50 text-white"></textarea>
+                </div>
+                <div>
+                  <label class="block text-lg font-semibold mb-2">Kelgan matn raqami</label>
+                  <input type="text" id="newMatn" placeholder="Masalan: 2.9.3." class="w-full px-5 py-3 rounded-lg bg-white/20 backdrop-blur placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-white/50 text-white"/>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-
