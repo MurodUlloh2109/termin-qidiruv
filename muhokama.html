@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Muhokama platformasi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <style>
+    .translate-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 20px 40px rgba(0,0,0,0.2); z-index: 1000; max-width: 500px; }
+    .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 min-h-screen">
+  <!-- Firebase config (login.html bilan bir xil) -->
+  <script>
+    const firebaseConfig = { /* BU YERGA o‘z config’ingizni qo‘ying */ };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // Agar kirmagan bo‘lsa login ga yuborish
+    auth.onAuthStateChanged(user => {
+      if (!user) window.location.href = "login.html";
+      else document.getElementById("userEmail").textContent = user.email;
+    });
+  </script>
+
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-emerald-700 mb-4">
+        Davlat farmakopeyasini ishlab chiqishda duch kelinadigan matnlardagi munozarali so'zlar muhokama platformasi
+      </h1>
+      <p class="text-lg text-gray-600">Salom, <strong id="userEmail"></strong>! Chiqish uchun <a href="#" onclick="auth.signOut();">bu yerda</a> bosing.</p>
+    </div>
+
+    <!-- 1. Yopiq munozaralar (tugallangan) -->
+    <h2 class="text-3xl font-semibold text-gray-800 mb-6">1. Yakunlangan munozaralar (Yopiq)</h2>
+    <div class="overflow-x-auto mb-16">
+      <table class="w-full bg-white rounded-xl shadow-lg" id="closedTable">
+        <thead class="bg-emerald-600 text-white">
+          <tr>
+            <th class="px-4 py-3">№</th>
+            <th class="px-4 py-3">Munozarali so‘z</th>
+            <th class="px-4 py-3">Kelgan matn raqami</th>
+            <th class="px-4 py-3">Rus tilida</th>
+            <th class="px-4 py-3">O‘zbek tilida</th>
+            <th class="px-4 py-3">Komentariya</th>
+            <th class="px-4 py-3">Yakuniy javob</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 text-center">1</td>
+            <td class="px-4 py-3">Reference</td>
+            <td class="px-4 py-3 text-center">3.2.3.</td>
+            <td class="px-4 py-3">
+              <span class="cursor-pointer text-blue-600 underline" onclick="showTranslate('The reference standard is trust.', 'Эталонный стандарт — доверие.', 'Etalon eritma - ishonch.')">
+                1.Стандарт<br>2.Эталон
+              </span>
+            </td>
+            <td class="px-4 py-3">
+              1.Standart<br>2.Etalon<br>3.
+            </td>
+            <td class="px-4 py-3 text-center">
+              <button class="bg-gray-500 text-white px-4 py-1 rounded" disabled>Yopiq</button>
+            </td>
+            <td class="px-4 py-3 text-center font-semibold text-emerald-700">Standart</td>
+          </tr>
+          <!-- boshqa qatorlar qo‘shiladi -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 2. Ochiq munozaralar -->
+    <h2 class="text-3xl font-semibold text-gray-800 mb-6">2. Davom etayotgan munozaralar (Ochiq)</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full bg-white rounded-xl shadow-lg" id="openTable">
+        <thead class="bg-red-600 text-white">
+          <tr>
+            <th class="px-4 py-3">№</th>
+            <th class="px-4 py-3">Munozarali so‘z</th>
+            <th class="px-4 py-3">Kelgan matn raqami</th>
+            <th class="px-4 py-3">Rus tilida</th>
+            <th class="px-4 py-3">O‘zbek tilida</th>
+            <th class="px-4 py-3">Komentariya</th>
+            <th class="px-4 py-3">Yakuniy javob</th>
+          </tr>
+        </thead>
+        <tbody id="openTbody">
+          <!-- Firebase dan keladi -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Tarjima popup -->
+  <div class="overlay" id="overlay" onclick="this.style.display='none'; document.getElementById('translatePopup').style.display='none'"></div>
+  <div class="translate-popup" id="translatePopup">
+    <h3 class="text-2xl font-bold mb-4 text-emerald-700">Tarjimalar</h3>
+    <div id="translateContent"></div>
+    <button class="mt-6 bg-emerald-600 text-white px-6 py-2 rounded-lg" onclick="document.getElementById('overlay').style.display='none'; document.getElementById('translatePopup').style.display='none'">Yopish</button>
+  </div>
+
+  <script>
+    function showTranslate(eng, rus, uz) {
+      document.getElementById("translateContent").innerHTML = `
+        <p><strong>Inglizcha:</strong> ${eng}</p>
+        <p class="mt-2"><strong>Ruscha:</strong> ${rus}</p>
+        <p class="mt-2"><strong>O‘zbekcha:</strong> ${uz}</p>
+      `;
+      document.getElementById("overlay").style.display = "block";
+      document.getElementById("translatePopup").style.display = "block";
+    }
+
+    // Ochiq munozaralarni Firestore dan yuklash va komment qoldirish
+    const openTbody = document.getElementById("openTbody");
+
+    db.collection("openDiscussions").orderBy("timestamp", "desc").onSnapshot(snapshot => {
+      openTbody.innerHTML = "";
+      snapshot.forEach((doc, index) => {
+        const d = doc.data();
+        const row = `
+          <tr class="hover:bg-gray-50">
+            <td class="px-4 py-3 text-center">${index + 1}</td>
+            <td class="px-4 py-3 font-semibold">${d.word}</td>
+            <td class="px-4 py-3 text-center">${d.docNumber}</td>
+            <td class="px-4 py-3">
+              <span class="cursor-pointer text-blue-600 underline" onclick="showTranslate('${d.engSentence}', '${d.rusSentence}', '${d.uzSentence}')">
+                ${d.rusOptions.replace(/\n/g, "<br>")}
+              </span>
+            </td>
+            <td class="px-4 py-3">${d.uzOptions.replace(/\n/g, "<br>")}</td>
+            <td class="px-4 py-3 text-center">
+              <button onclick="addComment('${doc.id}')" class="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">Ochiq</button>
+            </td>
+            <td class="px-4 py-3 text-center text-gray-400">—</td>
+          </tr>`;
+        openTbody.innerHTML += row;
+      });
+    });
+
+    function addComment(docId) {
+      const comment = prompt("Izohingizni kiriting:");
+      if (comment) {
+        const userEmail = auth.currentUser.email;
+        db.collection("openDiscussions").doc(docId).collection("comments").add({
+          text: comment,
+          author: userEmail,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        }).then(() => alert("Izoh qoldirildi!"));
+      }
+    }
+  </script>
+</body>
+</html>
