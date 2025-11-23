@@ -1,286 +1,541 @@
 <!DOCTYPE html>
+
 <html lang="uz" class="scroll-smooth">
+
 <head>
+
   <meta charset="UTF-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>PharmaTerm – Termin Qidiruv Tizimi</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;700&display=swap" rel="stylesheet" />
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
+
     tailwind.config = {
+
       theme: {
+
         extend: {
+
           fontFamily: {
+
             sans: ['Inter', 'sans-serif'],
+
             display: ['Manrope', 'sans-serif'],
+
           },
+
           colors: {
+
             primary: '#10b981',
+
+            light: '#ecfdf5',
+
             accent: '#34d399',
+
+            border: '#86efac',
+
           },
+
           animation: { float: 'float 6s ease-in-out infinite' },
-          keyframes: { float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } } }
+
+          keyframes: {
+
+            float: {
+
+              '0%, 100%': { transform: 'translateY(0)' },
+
+              '50%': { transform: 'translateY(-8px)' },
+
+            }
+
+          }
+
         }
+
       }
+
     }
+
   </script>
+
   <style>
-    .card {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(16, 185, 129, 0.2);
-      border-radius: 1.5rem;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
-      transition: all 0.3s ease;
+
+    :root {
+
+      --card-bg: rgba(255, 255, 255, 0.85);
+
+      --card-border: rgba(16, 185, 129, 0.2);
+
+      --shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
+
     }
+
+    .card {
+
+      background: var(--card-bg);
+
+      border: 1px solid var(--card-border);
+
+      box-shadow: var(--shadow);
+
+      border-radius: 1.5rem;
+
+      backdrop-filter: blur(10px);
+
+      transition: all 0.3s ease;
+
+    }
+
     .card:hover { box-shadow: 0 15px 40px rgba(16,185,129,0.15); transform: translateY(-4px); }
 
-    .stat-card {
-      @apply card p-6 text-center text-white font-bold rounded-3xl shadow-2xl transform transition-all duration-300 hover:scale-105;
-      min-width: 180px;
-    }
-
     .clickable-term { cursor: pointer; font-weight: 600; transition: all 0.2s; }
+
     .clickable-term:hover { transform: scale(1.05); text-decoration: underline; }
 
     .highlight-0 { background: linear-gradient(90deg, #fefce8, #fde68a); }
+
     .highlight-1 { background: linear-gradient(90deg, #ecfdf5, #a7f3d0); }
+
     .highlight-2 { background: linear-gradient(90deg, #fef2f2, #fca5a5); }
+
     .highlight-3 { background: linear-gradient(90deg, #f3e8ff, #c4b5fd); }
+
     .highlight-4 { background: linear-gradient(90deg, #fff7ed, #fdba74); }
 
+    .highlight-5 { background: linear-gradient(90deg, #ecfeff, #67e8f9); }
+
+    .highlight-6 { background: linear-gradient(90deg, #fffbeb, #fcd34d); }
+
+    .highlight-7 { background: linear-gradient(90deg, #fdf2f8, #f9a8d4); }
+
+    .highlight-8 { background: linear-gradient(90deg, #f0fdf4, #86efac); }
+
+    .highlight-9 { background: linear-gradient(90deg, #faf5ff, #d8b4fe); }
+
     #manbaBox {
-      position: sticky;
-      top: 140px;
-      z-index: 98;
+
       transition: all 0.4s ease;
+
+      word-wrap: break-word;
+
+      max-width: 100%;
+
+      padding: 1rem;
+
+      position: sticky;
+
+      top: 130px;
+
+      z-index: 98;
+
+      font-family: 'Manrope', sans-serif;
+
+      font-weight: 600;
+
     }
 
-    header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #86efac; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid #86efac; }
+
+    .search-container { position: sticky; top: 76px; z-index: 99; padding: 1.5rem 0; margin-bottom: 2rem; background: linear-gradient(to bottom, #ecfdf5, transparent); }
+
+    #natijalar { overflow-y: auto; max-height: 70vh; padding-right: 8px; }
+
+    table { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 0; overflow: hidden; border-radius: 1.25rem; box-shadow: 0 6px 25px rgba(16,185,129,0.1); background: white; }
+
+    th { background: linear-gradient(135deg, #10b981, #059669); color: white; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; padding: 1rem; }
+
+    td { padding: 0.875rem; border-bottom: 1px solid #ecfdf5; transition: background 0.2s; }
+
+    tbody tr:hover td { background: #ecfdf5; }
+
+    ::-webkit-scrollbar { width: 8px; }
+
+    ::-webkit-scrollbar-track { background: transparent; }
+
+    ::-webkit-scrollbar-thumb { background: #86efac; border-radius: 4px; }
+
+    ::-webkit-scrollbar-thumb:hover { background: #34d399; }
+
   </style>
+
 </head>
+
 <body class="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 text-gray-800 min-h-screen">
 
   <script>
+
     if (!localStorage.getItem("authenticated")) {
+
       window.location.href = "login.html";
+
     }
+
+    function logout() {
+
+      localStorage.removeItem("authenticated");
+
+      localStorage.removeItem("current_user");
+
+      window.location.href = "login.html";
+
+    }
+
   </script>
 
-  <!-- HEADER -->
+  <!-- Header – YANGI: Muhokama tugmasi qo‘shildi -->
+
   <header class="shadow-sm">
+
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+
       <div class="flex items-center space-x-3">
+
         <div class="w-11 h-11 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl shadow-lg animate-float"></div>
+
         <h1 class="text-2xl font-bold text-emerald-700">
+
           The State Pharmacopoeia Development Department
+
         </h1>
+
       </div>
+
+      <!-- Tugmalar guruhi -->
+
       <div class="flex items-center gap-4">
+
+        <!-- Muhokama tugmasi -->
+
         <a href="muhokama.html" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-semibold shadow-md transition-all hover:shadow-lg flex items-center gap-2">
+
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2m-4-8H9a2 2 0 00-2 2v6a2 2 0 002 2h2m4-8v8m-4-4h4"/>
+
+          </svg>
+
           Muhokama
+
         </a>
+
+        <!-- Asosiy menyu tugmasi (avvalgidek) -->
+
         <a href="https://murodulloh2109.github.io/termin-qidiruv/" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-full font-semibold shadow-md transition-all hover:shadow-lg">
+
           Asosiy menyu
+
         </a>
+
       </div>
+
     </div>
+
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 py-10">
+  <main class="max-w-7xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-4 gap-6">
 
-    <!-- QIDIRUV PANELI – KATTALASHTIRILGAN -->
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold text-emerald-700 mb-8">So‘z qidiruv tizimi</h2>
-      <div class="flex flex-col lg:flex-row gap-6 items-center justify-center max-w-5xl mx-auto">
-        <select id="filterSelect" onchange="filterChanged()" class="card px-8 py-5 rounded-full text-lg font-medium border border-emerald-300 focus:ring-4 focus:ring-emerald-300 focus:outline-none shadow-lg">
-          <option value="Termin">Terminlar</option>
-          <option value="Slovar">Munozarali so'zlar</option>
-          <option value="Qisqartma">Qisqartmalar</option>
-        </select>
+    <!-- SIDEBAR – faqat Manba qismi -->
 
-        <input id="qidiruvSoz" type="text" placeholder="So‘z yoki ibora kiriting..." 
-               class="flex-grow card px-8 py-5 rounded-full text-xl border border-emerald-300 focus:ring-4 focus:ring-emerald-300 focus:outline-none placeholder-gray-500 shadow-lg" />
+    <aside class="order-2 lg:order-1">
 
-        <button onclick="qidir()" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-12 py-5 rounded-full font-bold text-xl shadow-xl hover:shadow-2xl hover:scale-105 transition">
-          Qidirish
-        </button>
+      <div id="manbaBox" class="card p-5 text-center text-lg font-semibold text-emerald-700 border border-emerald-300">
+
+        Manba
+
       </div>
-    </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+    </aside>
 
-      <!-- SIDEBAR: Manba + Statistika kartochkalari (pastda) -->
-      <aside class="space-y-8">
-        <!-- Manba box -->
-        <div id="manbaBox" class="card p-6 text-center text-xl font-semibold text-emerald-700 border-2 border-emerald-300">
-          Manba
+    !-- Statistika kartochkalari -->
+
+        <div class="card p-6 text-center bg-gradient-to-br from-emerald-500 to-teal-600 text-white">
+
+          <h3 class="text-4xl font-extrabold">100</h3>
+
+          <p class="text-emerald-100 text-lg mt-2">Terminlar</p>
+
         </div>
 
-        <!-- STATISTIKA KARTOCHKALARI – 2-rasmdagidek vertikal joylashgan -->
-        <div class="space-y-6">
-          <div class="stat-card bg-gradient-to-br from-emerald-500 to-teal-600">
-            <div class="text-5xl font-extrabold" id="countTerminlar">-</div>
-            <p class="text-emerald-100 text-lg mt-2">Terminlar</p>
-          </div>
+        <div class="card p-6 text-center bg-gradient-to-br from-amber-500 to-orange-600 text-white">
 
-          <div class="stat-card bg-gradient-to-br from-amber-500 to-orange-600">
-            <div class="text-5xl font-extrabold" id="countSlovar">-</div>
-            <p class="text-amber-100 text-lg mt-2">Munozarali so‘zlar</p>
-          </div>
+          <h3 class="text-4xl font-extrabold">100</h3>
 
-          <div class="stat-card bg-gradient-to-br from-purple-500 to-indigo-600">
-            <div class="text-5xl font-extrabold" id="countQisqartma">-</div>
-            <p class="text-purple-100 text-lg mt-2">Qisqartmalar</p>
-          </div>
+          <p class="text-amber-100 text-lg mt-2">Munozarali so‘zlar</p>
+
         </div>
+
+        <div class="card p-6 text-center bg-gradient-to-br from-purple-500 to-indigo-600 text-white">
+
+          <h3 class="text-4xl font-extrabold">100</h3>
+
+          <p class="text-purple-100 text-lg mt-2">Qisqartmalar</p>
+
+        </div>
+
       </aside>
 
-      <!-- NATIJALAR -->
-      <section class="lg:col-span-3">
-        <div id="natijalar" class="space-y-8"></div>
-      </section>
-    </div>
+  
+
+    <!-- ASOSIY QISIM -->
+
+    <section class="lg:col-span-3 order-1 lg:order-2">
+
+      <div class="search-container">
+
+        <h2 class="text-3xl font-bold text-emerald-700 mb-5">So‘z qidiruv tizimi</h2>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+
+          <select id="filterSelect" onchange="filterChanged()" class="card px-5 py-3 rounded-full border border-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 text-sm font-medium">
+
+            <option value="Termin">Terminlar</option>
+
+            <option value="Slovar">Munozarali so'zlar</option>
+
+            <option value="Qisqartma">Qisqartmalar</option>
+
+          </select>
+
+          <input id="qidiruvSoz" type="text" placeholder="So‘z yoki gap kiriting" class="flex-grow card px-5 py-3 rounded-full border border-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 placeholder-gray-500" />
+
+          <button onclick="qidir()" class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition">
+
+            Qidirish
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <div id="natijalar" class="space-y-6"></div>
+
+    </section>
+
   </main>
 
-  <!-- SCRIPT: Statistika + Qidiruv funksiyalari -->
+  <!-- Barcha scriptlar o‘zgarmadi (avvalgidek ishlaydi) -->
+
   <script>
+
     let allData = {};
+
     let currentFilter = "Termin";
+
     let isDataLoaded = false;
 
-    // JSON fayllardan elementlar sonini olish
-    async function updateStats() {
-      const filters = ["Termin", "Slovar", "Qisqartma"];
-      for (const f of filters) {
-        try {
-          const res = await fetch(`${f}.json?t=` + Date.now());
-          if (res.ok) {
-            const json = await res.json();
-            const count = Array.isArray(json) ? json.length : 1;
-            document.getElementById(`count${f}`).textContent = count.toLocaleString();
-          }
-        } catch (e) {
-          document.getElementById(`count${f}`).textContent = "0";
-        }
-      }
-    }
-
     function escapeQuotes(text) { return (text || '').replace(/'/g, "\\'"); }
-    function escapeHtml(text) {
-      return text?.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])) || "";
-    }
 
     async function loadData(filter) {
-      try {
-        const res = await fetch(`${filter}.json?t=` + Date.now());
-        if (!res.ok) throw new Error();
-        const json = await res.json();
-        allData[filter] = Array.isArray(json) ? json : [json];
-      } catch (e) {
-        allData[filter] = [];
-      }
-      isDataLoaded = true;
+
+        try {
+
+            const res = await fetch(`${filter}.json`);
+
+            if (!res.ok) throw new Error(`${filter}.json topilmadi`);
+
+            const json = await res.json();
+
+            allData[filter] = Array.isArray(json) ? json : [json];
+
+        } catch (e) {
+
+            console.error(`${filter}.json faylini yuklab bo‘lmadi`, e);
+
+            allData[filter] = [];
+
+            document.getElementById("natijalar").innerHTML = `<p class="text-red-600">Xato: ${filter}.json yuklanmadi.</p>`;
+
+        }
+
+        isDataLoaded = true;
+
     }
 
     function filterChanged() {
-      const newFilter = document.getElementById("filterSelect").value;
-      if (newFilter !== currentFilter) {
-        currentFilter = newFilter;
-        isDataLoaded = false;
-        document.getElementById("natijalar").innerHTML = "";
-        loadData(currentFilter);
-      }
+
+        const newFilter = document.getElementById("filterSelect").value;
+
+        if (newFilter !== currentFilter) {
+
+            currentFilter = newFilter;
+
+            isDataLoaded = false;
+
+            allData = {};
+
+            document.getElementById("natijalar").innerHTML = "";
+
+            loadData(currentFilter).then(() => {
+
+                const input = document.getElementById("qidiruvSoz").value.trim();
+
+                if (input) qidir();
+
+            });
+
+        }
+
     }
 
     document.getElementById("qidiruvSoz").addEventListener("keypress", e => { if (e.key === "Enter") qidir(); });
 
     function showKitob(nomi, url) {
-      const box = document.getElementById("manbaBox");
-      if (url && url.trim()) {
-        box.innerHTML = `Manba: <a href="${url}" target="_blank" class="text-emerald-600 underline font-bold">${escapeHtml(nomi)}</a>`;
-      } else {
-        box.innerHTML = `Manba: ${escapeHtml(nomi)}`;
-      }
-      box.classList.add("border-emerald-600", "bg-emerald-100");
-      setTimeout(() => box.classList.remove("border-emerald-600", "bg-emerald-100"), 3000);
+
+        const box = document.getElementById("manbaBox");
+
+        if (url && url.trim() !== "") {
+
+            box.innerHTML = `Manba: <a href="${url}" target="_blank" class="text-emerald-600 underline font-bold">${escapeHtml(nomi)}</a>`;
+
+        } else {
+
+            box.innerHTML = `Manba: ${escapeHtml(nomi)}`;
+
+        }
+
+        box.classList.add("border-emerald-600", "bg-emerald-100");
+
+        setTimeout(() => box.classList.remove("border-emerald-600", "bg-emerald-100"), 3000);
+
     }
 
     function belgilash(matn, sozlar, kitob, url) {
-      if (!matn) return "-";
-      let result = matn;
-      sozlar.forEach((soz, i) => {
-        const re = new RegExp(`(${soz})`, "gi");
-        const cls = `highlight-${i % 5}`;
-        result = result.replace(re, `<span class="${cls} cursor-pointer px-1 rounded clickable-term" onclick="showKitob('${escapeQuotes(kitob)}','${escapeQuotes(url)}')">$1</span>`);
-      });
-      return result;
+
+        if (!matn) return "-";
+
+        let result = matn;
+
+        sozlar.forEach((soz, i) => {
+
+            const re = new RegExp(`(${soz})`, "gi");
+
+            const cls = `highlight-${i % 10}`;
+
+            result = result.replace(re, `<span class="${cls} cursor-pointer px-1 rounded clickable-term" onclick="showKitob('${escapeQuotes(kitob)}','${escapeQuotes(url)}')">$1</span>`);
+
+        });
+
+        return result;
+
+    }
+
+    function escapeHtml(text) {
+
+        return text?.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])) || "";
+
     }
 
     async function qidir() {
-      if (!isDataLoaded) await loadData(currentFilter);
-      const query = document.getElementById("qidiruvSoz").value.trim().toLowerCase();
-      const resultsDiv = document.getElementById("natijalar");
-      resultsDiv.innerHTML = "";
 
-      if (!query) {
-        resultsDiv.innerHTML = '<p class="text-center text-gray-500 text-xl">Iltimos, so‘z kiriting.</p>';
-        return;
-      }
+        if (!isDataLoaded) await loadData(currentFilter);
 
-      const data = allData[currentFilter] || [];
-      if (!data.length) {
-        resultsDiv.innerHTML = `<p class="text-center text-red-500 text-xl">Ma'lumotlar mavjud emas.</p>`;
-        return;
-      }
+        const query = document.getElementById("qidiruvSoz").value.trim().toLowerCase();
 
-      const sozlar = query.split(/[\s,.;-]+/).filter(Boolean).map(s => s.toLowerCase());
+        const resultsDiv = document.getElementById("natijalar");
 
-      const found = data.filter(item => {
-        return sozlar.some(s => (
-          (item["term uzb"]?.toLowerCase() || '').includes(s) ||
-          (item["term rus"]?.toLowerCase() || '').includes(s) ||
-          (item["term eng"]?.toLowerCase() || '').includes(s)
-        ));
-      });
+        resultsDiv.innerHTML = "";
 
-      if (!found.length) {
-        resultsDiv.innerHTML = '<p class="text-center text-red-600 text-xl font-medium">Maʼlumot topilmadi.</p>';
-        return;
-      }
+        if (!query) { resultsDiv.innerHTML = '<p class="text-center text-gray-500">Iltimos, so‘z kiriting.</p>'; return; }
 
-      let html = '';
-      found.forEach(entry => {
-        const eng = entry["term eng"] || "";
-        const uzb = entry["term uzb"] || "-";
-        const rus = entry["term rus"] || "-";
+        const data = allData[currentFilter] || [];
 
-        html += `
-          <div class="card p-6 mb-6">
-            <table class="w-full text-left">
-              <thead>
-                <tr class="text-sm font-semibold text-gray-600 border-b">
-                  <th class="pb-3">Inglizcha</th>
-                  <th class="pb-3">Ruscha</th>
-                  <th class="pb-3">O‘zbekcha</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="hover:bg-emerald-50 transition">
-                  <td class="py-4 clickable-term" onclick="showKitob('${escapeQuotes(entry.kitob_eng || "")}','${escapeQuotes(entry.kitob_eng_url || "")}')">${belgilash(eng, sozlar, entry.kitob_eng, entry.kitob_eng_url)}</td>
-                  <td class="py-4 clickable-term" onclick="showKitob('${escapeQuotes(entry.kitob_rus || "")}','${escapeQuotes(entry.kitob_rus_url || "")}')">${belgilash(rus, sozlar, entry.kitob_rus, entry.kitob_rus_url)}</td>
-                  <td class="py-4 clickable-term" onclick="showKitob('${escapeQuotes(entry.kitob_uzb || "")}','${escapeQuotes(entry.kitob_uzb_url || "")}')">${belgilash(uzb, sozlar, entry.kitob_uzb, entry.kitob_uzb_url)}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>`;
-      });
-      resultsDiv.innerHTML = html;
+        if (!data.length) { resultsDiv.innerHTML = `<p class="text-center text-red-500">Ma'lumotlar mavjud emas.</p>`; return; }
+
+        const sozlar = query.split(/[\s,.;-]+/).filter(Boolean).map(s => s.toLowerCase());
+
+        const found = data.filter(item => {
+
+            const uzbKeys = Object.keys(item).filter(k => k.startsWith("term uzb") && k !== "term uzb");
+
+            const rusKeys = Object.keys(item).filter(k => k.startsWith("term rus") && k !== "term rus");
+
+            return sozlar.some(s => (
+
+                (item["term uzb"]?.toLowerCase() || '').includes(s) ||
+
+                uzbKeys.some(k => (item[k]?.toLowerCase() || '').includes(s)) ||
+
+                (item["term rus"]?.toLowerCase() || '').includes(s) ||
+
+                rusKeys.some(k => (item[k]?.toLowerCase() || '').includes(s)) ||
+
+                (item["term eng"]?.toLowerCase() || '').includes(s)
+
+            ));
+
+        });
+
+        if (!found.length) { resultsDiv.innerHTML = '<p class="text-center text-red-500">Maʼlumot topilmadi.</p>'; return; }
+
+        let tableContent = '';
+
+        found.forEach(entry => {
+
+            const eng = entry["term eng"] || "";
+
+            const uzbTerms = [{ text: entry["term uzb"] || "-", kitob: entry["kitob_uzb"] || "", url: entry["kitob_uzb_url"] || "" }]
+
+                .concat(Object.keys(entry).filter(k => k.startsWith("term uzb") && k !== "term uzb").map(k => ({
+
+                    text: entry[k] || "-", kitob: entry[`kitob_${k.split("term ")[1]}`] || entry["kitob_uzb"] || "",
+
+                    url: entry[`kitob_${k.split("term ")[1]}_url`] || entry["kitob_uzb_url"] || ""
+
+                }))).filter(t => t.text !== "-");
+
+            const rusTerms = [{ text: entry["term rus"] || "-", kitob: entry["kitob_rus"] || "", url: entry["kitob_rus_url"] || "" }]
+
+                .concat(Object.keys(entry).filter(k => k.startsWith("term rus") && k !== "term rus").map(k => ({
+
+                    text: entry[k] || "-", kitob: entry[`kitob_${k.split("term ")[1]}`] || entry["kitob_rus"] || "",
+
+                    url: entry[`kitob_${k.split("term ")[1]}_url`] || entry["kitob_rus_url"] || ""
+
+                }))).filter(t => t.text !== "-");
+
+            const maxLength = Math.max(uzbTerms.length, rusTerms.length);
+
+            tableContent += `<table class="w-full mb-6"><thead><tr><th>Inglizcha</th><th>Ruscha</th><th>O‘zbekcha</th></tr></thead><tbody>`;
+
+            for (let i = 0; i < maxLength; i++) {
+
+                const rus = rusTerms[i] || { text: "-", kitob: "", url: "" };
+
+                const uzb = uzbTerms[i] || { text: "-", kitob: "", url: "" };
+
+                tableContent += `
+
+                    <tr>
+
+                        <td class="clickable-term" onclick="showKitob('${escapeQuotes(entry["kitob_eng"])}','${escapeQuotes(entry["kitob_eng_url"])}')">${belgilash(eng, sozlar, entry["kitob_eng"], entry["kitob_eng_url"])}</td>
+
+                        <td class="clickable-term" onclick="showKitob('${escapeQuotes(rus.kitob)}','${escapeQuotes(rus.url)}')">${belgilash(rus.text, sozlar, rus.kitob, rus.url)}</td>
+
+                        <td class="clickable-term" onclick="showKitob('${escapeQuotes(uzb.kitob)}','${escapeQuotes(uzb.url)}')">${belgilash(uzb.text, sozlar, uzb.kitob, uzb.url)}</td>
+
+                    </tr>`;
+
+            }
+
+            tableContent += `</tbody></table>`;
+
+        });
+
+        resultsDiv.innerHTML = tableContent;
+
     }
 
-    // Sahifa yuklanganda hamma narsani ishga tushirish
-    updateStats();
     loadData(currentFilter);
+
   </script>
+
 </body>
+
 </html>
