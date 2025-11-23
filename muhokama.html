@@ -208,8 +208,33 @@
                   <input type="text" id="engSource" placeholder="Manba (ixtiyoriy)" class="px-8 py-6 bg-blue-700/70 border-2 border-blue-500 rounded-2xl text-white placeholder-white/60 text-xl font-medium focus:outline-none focus:border-white focus:bg-blue-700/90 transition-all">
                 </div>
               </div>
-              <!-- Rus va O‘zbek qatorlari (xuddi shu tarzda) -->
-              <!-- ... (oldingi kodni qo‘shib qo‘ying) ... -->
+              
+              <!-- 2-qator: Rus tilidagi tarjima | kontekst | manba -->
+      <div class="space-y-4">
+        <div class="text-white/90 text-lg font-medium text-center">Rus tilidagi tarjima  kontekst  manba</div>
+        <div class="grid grid-cols-3 gap-6">
+          <textarea id="rusVariants" rows="4" placeholder="1. Растворение&#10;2. Высвобождение&#10;3. ..."
+                    class="px-8 py-6 bg-blue-700/70 border-2 border-blue-500 rounded-2xl text-white placeholder-white/60 text-xl resize-none focus:outline-none focus:border-white focus:bg-blue-700/90 transition-all"></textarea>
+          <input type="text" placeholder="kontekst (ixtiyoriy)"
+                 class="px-8 py-6 bg-blue-700/70 border-2 border-blue-500 rounded-2xl text-white placeholder-white/60 text-xl font-medium focus:outline-none focus:border-white focus:bg-blue-700/90 transition-all">
+          <input type="text" placeholder="manba (ixtiyoriy)"
+                 class="px-8 py-6 bg-blue-700/70 border-2 border-blue-500 rounded-2xl text-white placeholder-white/60 text-xl font-medium focus:outline-none focus:border-white focus:bg-blue-700/90 transition-all">
+        </div>
+      </div>
+
+      <!-- 3-qator: O‘zbek tilidagi tarjima | kontekst | manba -->
+      <div class="space-y-4">
+        <div class="text-white/90 text-lg font-medium text-center">O‘zbek tilidagi tarjima  kontekst  manba</div>
+        <div class="grid grid-cols-3 gap-6">
+          <textarea id="uzbVariants" rows="4" placeholder="1. Eritish&#10;2. Chiqarilish&#10;3. ..."
+                    class="px-8 py-6 bg-blue-700/70 border-2 border-blue-500 rounded-2xl text-white placeholder-white/60 text-xl resize-none focus:outline-none focus:border-white focus:bg-blue-700/90 transition-all"></textarea>
+          <input type="text" placeholder="kontekst (ixtiyoriy)"
+                 class="px-8 py-6 bg-blue-700/70 border-2 border-blue-500 rounded-2xl text-white placeholder-white/60 text-xl font-medium focus:outline-none focus:border-white focus:bg-blue-700/90 transition-all">
+          <input type="text" placeholder="manba (ixtiyoriy)"
+                 class="px-8 py-6 bg-blue-700/70 border-2 border-blue-500 rounded-2xl text-white placeholder-white/60 text-xl font-medium focus:outline-none focus:border-white focus:bg-blue-700/90 transition-all">
+        </div>
+      </div>
+              
               <!-- Matn raqami -->
               <div class="space-y-4">
                 <div class="text-white/90 text-lg font-medium text-center">So‘z uchragan matn raqami</div>
